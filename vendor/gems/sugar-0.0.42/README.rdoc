@@ -1,0 +1,7 @@
+= sugar
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 Alexander Semyonov. See LICENSE for details.
