@@ -1,5 +1,7 @@
 require 'rubygems'
-require 'vendor/sinatra/lib/sinatra.rb'
+$: += Dir.glob( File.join( 'vendor', 'gems', '*', 'lib' ) )
+
+require 'sinatra'
 
 Sinatra::Application.default_options.merge!(
   :run => false,
