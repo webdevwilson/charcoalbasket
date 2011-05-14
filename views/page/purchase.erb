@@ -1,0 +1,127 @@
+<% content_for :header do %>
+<script type="text/javascript" src="/js/purchase.js"></script>
+<% end %>
+<img src="/images/charcoal-basket-finished-medium.jpg" style="float: right; width: 375px; height: 272px;" />
+<h1>Purchase a Charcoal Basket</h1>
+<p>All charcoal baskets are fabricated with <strong>3/4&quot; Expanded Black Iron Steel</strong> and optionally finished with <strong>Black 1200&deg; Paint</strong>.</p>
+<p>To purchase a charcoal basket, select one of the options below:</p>
+<form action="<%= CHECKOUT_URL %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
+  <div class="checkoutInfobox">
+    <p><!--<input type="radio" name="sizing" id="standard-sizing" value="standard"/> Standard (12" x 12" x 6" Depth)--></p>
+    <p><input type="radio" name="sizing" id="standard-size" value="square:12x12x6" checked="true" /> 12&quot; x 12&quot; x 6&quot; Deep ($69.99)</p>
+    <p><input type="radio" name="sizing" id="product-sizing" value="brand" /> Purchase by the brand of your smoker</p>
+    <div id="by_brand" style="display: none;">
+      <strong>Select your Smoker:</strong>&nbsp;&nbsp;
+      <select id="brand_selector" name="brand_selector">
+        <option value="square:12x12x6">Bar-B-Chef Offset</option>
+        <option value="square:12x12x6">Brinkmann Cimarron Deluxe</option>
+        <option value="square:12x12x6">Brinkmann Smoke King Deluxe</option>
+        <option value="square:9x14x5">Charbroil Silver</option>
+        <option value="square:12x12x6">Chargriller Side Fire Box</option>
+        <option value="square:12x12x6">Chargriller Smokin' Pro</option>
+        <option value="square:12x12x6">New Braunfels Bandera</option>
+        <option value="square:12x12x6">New Braunfels Hondo</option>
+        <option value="square:15x15x8">New Braunfels Longhorn Deluxe</option>
+        <option value="square:12x12x6">Old Country 20&quot;</option>
+        <option value="square:15x15x8">RD Horizon Offset 20&quot;</option>
+        <option value="square:15x15x8">RD Horizon Offset 24&quot;</option>
+      </select><br />
+      <a href="javascript: void(0);" onclick="$('faq_smoker_listing').style.display = 'block'; return false;" class="sub">Why isn&quot;t my smoker listed?</a>
+      <div id="faq_smoker_listing" class="infobox" style="display: none;">
+        <h3>Why isn't my smoker listed?</h3>
+        <p>
+	      The list here is made possible by generous feedback from our customers.  If you know the size you require, or would like us to
+	      try and figure it out, please <a href="/page/feedback">contact us</a>.
+        </p>
+        <center><a href="javascript: void(0);" onclick="$('faq_smoker_listing').style.display='none'; return false;" class="sub">close</a></center>
+      </div>
+    </div>
+    <p><input type="radio" name="sizing" id="custom-sizing" value="custom" /> Make a custom size (add $15)</p>
+    <div id="custom_sizing" style="padding-left: 50px; display: none;">
+      <p>
+		  Shape:
+        <select id="shape" name="shape">
+          <option value="square">Square</option>
+          <option value="round">Circular</option>
+        </select>
+      </p>
+      <strong>Dimensions (inches)</strong>
+      <div id="square_fields">
+        <div class="field">
+          <label for="custom_width">Side 1:</label>
+          <input type="text" name="square_width_1" id="square_width" onblur="dimensionBlur()" size="3" value="12" /><br />
+        </div>
+        <div class="field">
+          <label for="custom_height">Side 2:</label>
+          <input type="text" name="square_height_1" id="square_height" onblur="dimensionBlur()" size="3" value="12" /><br />
+        </div>
+        <div class="field">
+          <label for="custom_depth">Depth:</label>
+          <input type="text" name="square_depth_1" id="square_depth" onblur="dimensionBlur()" size="3" value="6" />
+        </div>
+      </div>
+      <div id="round_fields" style="display: none;">
+        <div class="field">
+          <label for="custom_height">Radius:</label>
+          <input type="text" name="round_radius_1" id="round_radius" onblur="dimensionBlur()" size="3" value="12" /><br />
+        </div>
+        <div class="field">
+          <label for="custom_depth">Depth:</label>
+          <input type="text" name="round_depth_1" id="round_depth" onblur="dimensionBlur()" size="3" value="6" />
+        </div>
+      </div>
+      <p><strong>NOTE:</strong> Baskets may be shipped up to 1/4&quot over selected size.</p>
+    </div>
+  </div>
+  <div class="checkoutTotalBox" style="clear: left;">
+    <p>
+      <span style="color: #f00; font-weight: bold;">FREE SHIPPING ON ADDITIONAL BASKETS!</span><br />
+      <strong>Quantity:</strong>
+      <input type="text" id="item_quantity" name="item_quantity_1" value="1" size="1" />
+      <a href="javascript: void(0);" onclick="setDimensions(dim); return false;" class="sub">calculate</a><br />
+      <a href="javascript: void(0);" onclick="$('why_multiple').style.display = 'block'; return false;" class="sub">Why should I order multiple baskets?</a>
+    </p>
+    <div id="why_multiple" style="display: none; clear: both;" class="infobox">
+      <h3>Why should I order multiple baskets?</h3>
+      <p>Having multiple charcoal baskets makes it much easier to swap fuel with minimal temperature loss during longer burns.</p>
+      <center><a href="javascript: void(0);" onclick="$('why_multiple').style.display='none'; return false;" class="sub">close</a></center>
+    </div>
+    <table cellpadding="4" cellspacing="1" style="background-color: #999;">
+      <thead>
+        <tr>
+          <th colspan="2">Order Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label"><label>Subtotal:</label></td>
+          <td class="value">$<span id="amount">69.99</span></td>
+        </tr>
+        <tr>
+          <td class="label"><label>UPS S & H:</label></td>
+          <td class="value">$<span id="shipping">15.00</span></td>
+        <tr>
+          <td class="label"><label>Total (Tax will be added where applicable):</label></td>
+          <td class="value">$<span id="subtotal">84.99</span></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: right;">
+
+            <input type="hidden" id="item_name" name="item_name_1" value="Charcoal Smoker Box" />
+            <input type="hidden" id="item_description" name="item_description_1" value="12&quot; x 12&quot; x 6&quot; Depth" />
+            <input type="hidden" id="item_price" name="item_price_1" value="69.99" />
+            <input type="hidden" id="item_currency" name="item_currency_1" value="USD" />
+            <input type="hidden" id="ship_method" name="ship_method_name_1" value="UPS Ground" />
+            <input type="hidden" id="ship_method_price" name="ship_method_price_1" value="15" />
+            <input type="hidden" id="tax_rate" name="tax_rate" value="0.0925" />
+            <input type="hidden" id="tax_us_state" name="tax_us_state" value="TN" />
+            <input type="hidden" name="_charset_" />
+            <input type="hidden" name="analyticsdata" value="">
+            <input type="hidden" id="continue_shopping_url" name="checkout-flow-support.merchant-checkout-flow-support.continue-shopping-url" value="http://www.charcoalbasket.com/page/order-received" />
+            <input type="image" name="Google Checkout" alt="Fast checkout through Google" src="<%= CHECKOUT_BUTTON %>" height="46" width="180"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>
