@@ -1,5 +1,6 @@
 require 'rubygems'
-$: += Dir.glob( File.join( 'vendor', 'gems', '*', 'lib' ) )
+$: << Dir.glob( File.join( 'vendor', 'gems', '*', 'lib' ) )
+$:.flatten!
 
 require 'sinatra'
 
