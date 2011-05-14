@@ -13,4 +13,8 @@ set :environment, :production
 set :app_file, File.join( root_dir, 'main.rb' )
 disable :run
 
+log = File.new( File.join( root_dir, 'shared', 'log', 'sinatra.log', 'a') )
+$stdout.reopen(log)
+$stderr.reopen(log)
+
 run Sinatra::Application
