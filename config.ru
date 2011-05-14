@@ -13,4 +13,4 @@ set :environment, :production
 set :app_file, File.join( root_dir, 'main.rb' )
 disable :run
 
-run Sinatra.application
+run Sinatra::Application
