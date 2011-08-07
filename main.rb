@@ -32,12 +32,18 @@ get '/' do
   redirect '/page/home'
 end
 
-get '/page/purchase/*/*' do
+get '/page/purchase/*/*.html' do
   erb "page/purchase".to_sym
 end
 
 get '/page/:page' do
-  erb "page/#{params[:page]}".to_sym
+  
+  if /\.html/ =~ params[:page]
+    erb "page/#{params[:page][0..-6]}".to_sym
+  else
+    redirect "/page/#{params[:page]}.html", 301
+  end
+  
 end
 
 get '/calculate.json' do
@@ -45,7 +51,7 @@ get '/calculate.json' do
   Calculator.calculate( params['s'], params['t'] ).to_json
 end
 
-post '/forms/feedback' do
+post '/forms/feedback.html' do
   params[:to] = Configuration.feedback['to']
   params[:subject] = Configuration.feedback['subject']
   params[:body] = <<EOF

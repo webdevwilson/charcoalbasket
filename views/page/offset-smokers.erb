@@ -3,8 +3,8 @@
   A charcoal basket is a necessary accessory for smoking with charcoal in any offset smoker.  We have the dimensions
   for many popular brands of smokers including:
   <ul>
-    <% Configuration.brands.each do |brand| %>
-    <li><a href="purchase/brand/<%= brand['stub'] %>"><%= brand['name'] %></a></li>
+    <% Configuration['brands'].each do |brand| %>
+    <li><a href="purchase/brand/<%= brand['stub'] %>.html"><%= brand['name'] %></a></li>
     <% end %>
   </ul>
 </p>
