@@ -1,0 +1,44 @@
+brands:
+  - name: Bar-B-Chef Offset
+    stub: bar-b-chef-offset
+  - name: Brinkmann Cimarron Deluxe
+    stub: brinkmann-cimarron-deluxe
+  - name: Brinkmann Smoke King Deluxe
+    stub: brinkmann-smoke-king-deluxe
+  - name: Charbroil Silver
+    stub: charbroil-silver
+    size: square:9x14x5
+  - name: Chargriller Side Fire Box
+    stub: chargriller-side-fire-box
+  - name: Chargriller Smokin' Pro
+    stub: chargriller-smokin-pro
+  - name: New Braunsfel Bandera
+    stub: new-braunsfel-bandera
+  - name: New Braunsfel Longhorn Deluxe
+    stub: new-braunsfel-longhorn-deluxe
+    size: square:15x15x8
+  - name: Old Country 20&quot;
+    stub: old-country-20
+  - name: RD Horizon Offset 20&quot;
+    stub: rd-horizon-offset-20
+    size: square:15x15x8
+  - name: RD Horizon Offset 24&quot;
+    stub: rd-horizon-offset-24
+    size: square:15x15x8
+pricing:
+  material:
+    carbon: 50
+    stainless: 400
+  labor:
+    carbon: 30
+    stainless: 30
+  custom: 15
+  markup: 2.15
+weight:
+    carbon: 57.6
+    stainless: 65.6
+feedback:
+  to: kwilson@charcoalbasket.com
+  subject: charcoalbasket.com Form Submission
+  
+    

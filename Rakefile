@@ -24,6 +24,7 @@ spec = Gem::Specification.new do |s|
   s.files = %w(LICENSE README Rakefile) + Dir.glob("{bin,lib,spec}/**/*")
   s.require_path = "lib"
   s.bindir = "bin"
+  s.add_dependency 'json', '>= 1.5.3'
 end
 
 Rake::GemPackageTask.new(spec) do |p|

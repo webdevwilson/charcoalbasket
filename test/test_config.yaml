@@ -1,0 +1,11 @@
+pricing:
+  material:
+    carbon: 4608
+    stainless: 4608
+  labor:
+    carbon: 1
+    stainless: 1
+  custom: 15
+  markup: 2
+weight:
+  carbon: 4608
