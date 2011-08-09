@@ -40,5 +40,16 @@ weight:
 feedback:
   to: kwilson@charcoalbasket.com
   subject: charcoalbasket.com Form Submission
+analytics:
+  code: UA-249405-11
+environment:
+  dev:
+    checkout:
+      url: https://sandbox.google.com/checkout/api/checkout/v2/checkoutForm/Merchant/120471905698092
+      button: https://sandbox.google.com/checkout/buttons/buy.gif?merchant_id=120471905698092&amp;w=117&amp;h=48&amp;style=white&amp;variant=text&amp;loc=en_US
+  prod:    
+    checkout:
+      url: https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/835246094689493
+      button: http://checkout.google.com/buttons/checkout.gif?merchant_id=835246094689493&w=180&h=46&style=white&variant=text&loc=en_US
   
     

@@ -9,3 +9,9 @@ pricing:
   markup: 2
 weight:
   carbon: 4608
+  stainless: 4608
+overwrite: me
+environment:
+  test:
+    key: value
+    overwrite: value2

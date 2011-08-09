@@ -9,15 +9,7 @@ require 'sinatra/reloader'
 require 'calculator'
 require 'json'
 
-TESTING = false
-
-if TESTING
-  CHECKOUT_URL = 'https://sandbox.google.com/checkout/api/checkout/v2/checkoutForm/Merchant/120471905698092'
-  CHECKOUT_BUTTON = 'https://sandbox.google.com/checkout/buttons/buy.gif?merchant_id=120471905698092&amp;w=117&amp;h=48&amp;style=white&amp;variant=text&amp;loc=en_US'
-else
-  CHECKOUT_URL = 'https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/835246094689493'
-  CHECKOUT_BUTTON = 'http://checkout.google.com/buttons/checkout.gif?merchant_id=835246094689493&w=180&h=46&style=white&variant=text&loc=en_US'
-end
+Configuration.environment = ARGV[0] || 'prod'
 
 MAIL_CONFIG = {}
 
@@ -32,23 +24,36 @@ get '/' do
   redirect '/page/home'
 end
 
-get '/page/purchase/*/*.html' do
+get '/purchase/*/*.html' do
+  @type = params[:splat][0]
+  if @type == 'standard'
+    spec = 'square:12x12x6'
+  elsif @type == 'brand'
+    @brand = Configuration['brands'][params[:splat[0]]]
+    spec = @brand['size']
+  end
+  @product_info = Calculator.calculate(spec)
   erb "page/purchase".to_sym
 end
 
 get '/page/:page' do
-  
   if /\.html/ =~ params[:page]
     erb "page/#{params[:page][0..-6]}".to_sym
   else
-    redirect "/page/#{params[:page]}.html", 301
+    
+    if( params[:page] == 'purchase' )
+      redirect_url = '/purchase/standard/size.html'
+    else
+      redirect_url = "/page/#{params[:page]}.html"
+    end
+    
+    redirect redirect_url, 301
   end
-  
 end
 
 get '/calculate.json' do
   content_type 'application/json'
-  Calculator.calculate( params['s'], params['t'] ).to_json
+  Calculator.calculate( params['s'] ).to_json
 end
 
 post '/forms/feedback.html' do
