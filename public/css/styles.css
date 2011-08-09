@@ -1,20 +1,18 @@
-body { background: #ececec; font-family: 'Istok Web', sans-serif, helvetica, arial; font-size: 72.5%; color: #333; }
-
-p, li { font-size: 1.2em; }
+body { background: #ececec; font-family: 'Istok Web', sans-serif, helvetica, arial; font-size: 85%; color: #333; }
 
 h1 { font-size: 2em; }
 
 #container { background-color: #fff; border: 1px solid #ccc; }
 
 #header { color: #fff; }
-#header strong { font-size: 3.2em; }
-#header em { font-size: 1.4em; clear: left; }
+#header strong { font-size: 3em; line-height: 1em; }
+#header em { font-size: 1.2em; clear: left; }
 #header a { text-decoration: none; color: #999; }
 #header #header_text { }
 #navigation { background-color: #1A41A6; margin: 0px; }
 #navigation li { border-right: 1px solid #99c; cursor: pointer; }
 #navigation li:hover { background-color: #3A61c6; }
-#navigation li.purchase_link { background-color: #c00; float: right; border-right-width: 0px; }
+#navigation li.purchase_link { background-color: #c00; float: right; border-right-width: 0px; padding: auto 17px; }
 #navigation li.purchase_link:hover { background-color: #99190D; }
 #navigation li.purchase_link a:hover { color: #fff; }
 #navigation a { font-size: 1.1em; font-weight: bold; color: #fff; text-decoration: none; }
