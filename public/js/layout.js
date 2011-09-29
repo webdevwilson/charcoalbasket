@@ -13,7 +13,12 @@ $(function() {
 
     (function setupPurchasePage() {
         $('a[id^="explain"]').click(function() {
-            $('#why_' + $(this).attr('id').substring(8)).fadeIn();
+            var n=$('#why_' + $(this).attr('id').substring(8));
+            if(n.attr('state') != 'open') {
+                n.fadeIn().attr('state','open');
+            } else {
+                n.fadeOut().attr('state','closed');
+            }
             return false; 
         });
    

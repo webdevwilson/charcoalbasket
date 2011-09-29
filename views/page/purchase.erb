@@ -7,13 +7,12 @@ end
 <h1>  
 <% if @type == 'standard' %>
     12&quot; x 12&quot; x 6&quot; Charcoal Basket
-  <% elsif @type == 'brand' %>
-
-  <% end %>
+<% elsif @type == 'brand' %>
+    Charcoal Basket for <em><%= @brand['name'] %></em>
+<% end %>
 </h1>
-<p>Are you wanting to order a basket for a <a href="/page/offset-smokers.html">popular brand</a>?  or, perhaps you need to <a href="/purchase/custom/square.html">order a custom size/shape</a>?</p>
 <p>All charcoal baskets are fabricated with <strong>10 gauge 3/4&quot; carbon or stainless flat expanded steel</strong>.</p>
-<p class="sub"><strong>NOTE:</strong> Baskets may be shipped up to 1/4&quot over selected size.</p>
+<p class="sub"><strong>NOTE:</strong> Baskets may be up to 1/4&quot over/under selected size.</p>
 <form action="<%= Configuration['checkout']['url'] %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
 
   <div class="checkoutTotalBox" style="clear: left;">
@@ -23,7 +22,7 @@ end
     <div id="why_stainless" class="infobox hide">
       <p>
         Carbon steel should only be used up to 750&deg;, stainless steel can be used up to 1500&deg;.  Most consumer grade smokers
-        will not exceed 750&deg;.  Some people would like more durable material, or have large smokers capable of reaching higher temperatures.
+        will not exceed 750&deg;.  Some people would like more durable material or have large smokers capable of reaching higher temperatures.
       </p>
       <center><a href="#" id="close_stainless" class="sub">close</a></center>
     </div>
@@ -39,43 +38,18 @@ end
       <p>Having multiple charcoal baskets makes it much easier to swap fuel with minimal temperature loss during longer burns.</p>
       <center><a href="#" id="close_multiple" class="sub">close</a></center>
     </div>
-    <table cellpadding="4" cellspacing="1" style="background-color: #999;">
-      <thead>
-        <tr>
-          <th colspan="2">Order Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="label"><label>Subtotal:</label></td>
-          <td class="value">$<span id="amount"></span></td>
-        </tr>
-        <tr>
-          <td class="label"><label>UPS S & H:</label></td>
-          <td class="value">$<span id="shipping"></span></td>
-        </tr>
-        <tr>
-          <td class="label"><label>Total (Tax will be added where applicable):</label></td>
-          <td class="value">$<span id="subtotal"></span></td>
-        </tr>
-        <tr>
-          <td colspan="2" style="text-align: right;">
-
-            <input type="hidden" id="item_name" name="item_name_1" value="Charcoal Smoker Box" />
-            <input type="hidden" id="item_description" name="item_description_1" value="12&quot; x 12&quot; x 6&quot; Depth" />
-            <input type="hidden" id="item_price" name="item_price_1" value="69.99" />
-            <input type="hidden" id="item_currency" name="item_currency_1" value="USD" />
-            <input type="hidden" id="ship_method" name="ship_method_name_1" value="UPS Ground" />
-            <input type="hidden" id="ship_method_price" name="ship_method_price_1" value="15" />
-            <input type="hidden" id="tax_rate" name="tax_rate" value="0.0925" />
-            <input type="hidden" id="tax_us_state" name="tax_us_state" value="TN" />
-            <input type="hidden" name="_charset_" />
-            <input type="hidden" name="analyticsdata" value="">
-            <input type="hidden" id="continue_shopping_url" name="checkout-flow-support.merchant-checkout-flow-support.continue-shopping-url" value="http://www.charcoalbasket.com/page/order-received" />
-            <input type="image" name="Google Checkout" alt="Fast checkout through Google" src="<%= Configuration['checkout']['button'] %>" style="height: 46px; width: 117px;" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <p><strong>Subtotal:</strong> $<%= @product_info[:carbon][:price] %></p>
+    <input type="image" name="Google Checkout" alt="Fast checkout through Google" src="<%= Configuration['checkout']['button'] %>" style="height: 46px; width: 180px;" />
+    <input type="hidden" id="item_name" name="item_name_1" value="Charcoal Smoker Box" />
+    <input type="hidden" id="item_description" name="item_description_1" value="12&quot; x 12&quot; x 6&quot; Depth" />
+    <input type="hidden" id="item_price" name="item_price_1" value="69.99" />
+    <input type="hidden" id="item_currency" name="item_currency_1" value="USD" />
+    <input type="hidden" id="ship_method" name="ship_method_name_1" value="UPS Ground" />
+    <input type="hidden" id="ship_method_price" name="ship_method_price_1" value="15" />
+    <input type="hidden" id="tax_rate" name="tax_rate" value="0.0925" />
+    <input type="hidden" id="tax_us_state" name="tax_us_state" value="TN" />
+    <input type="hidden" name="_charset_" />
+    <input type="hidden" name="analyticsdata" value="">
+    <input type="hidden" id="continue_shopping_url" name="checkout-flow-support.merchant-checkout-flow-support.continue-shopping-url" value="http://www.charcoalbasket.com/page/order-received" />
   </div>
 </form>

@@ -29,8 +29,8 @@ get '/purchase/*/*.html' do
   if @type == 'standard'
     spec = 'square:12x12x6'
   elsif @type == 'brand'
-    @brand = Configuration['brands'][params[:splat[0]]]
-    spec = @brand['size']
+    @brand = Configuration['brands'].select { |it| puts("stub:#{it['stub']}"); it['stub'] == params[:splat][1] }.first
+    spec = @brand['size'] || Configuration['default_size']
   end
   @product_info = Calculator.calculate(spec)
   erb "page/purchase".to_sym
