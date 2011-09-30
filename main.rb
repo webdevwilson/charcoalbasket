@@ -27,12 +27,12 @@ end
 get '/purchase/*/*.html' do
   @type = params[:splat][0]
   if @type == 'standard'
-    spec = 'square:12x12x6'
+    @spec = 'square:12x12x6'
   elsif @type == 'brand'
     @brand = Configuration['brands'].select { |it| puts("stub:#{it['stub']}"); it['stub'] == params[:splat][1] }.first
-    spec = @brand['size'] || Configuration['default_size']
+    @spec = @brand['size'] || Configuration['default_size']
   end
-  @product_info = Calculator.calculate(spec)
+  @product_info = Calculator.calculate(@spec)
   erb "page/purchase".to_sym
 end
 
@@ -51,8 +51,9 @@ get '/page/:page' do
   end
 end
 
-get '/calculate.json' do
+get '/*.json' do
   content_type 'application/json'
+  op=params[:splat][0]
   Calculator.calculate( params['s'] ).to_json
 end
 

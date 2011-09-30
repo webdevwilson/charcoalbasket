@@ -19,10 +19,25 @@
   </li>
   <li>
     <h2>What size is the basket for x smoker?</h2>
-    <p>The sizes for all brands of smokers are listed on the order page.</p>
+    <table class="sizeTable">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Configuration['brands'].each do |brand| %>
+        <tr>
+          <td><%= brand['name'] %></td>
+          <td><%= /[a-z]+:([0-9x]+)/.match(brand['size'] || Configuration['default_size'])[1] %> deep</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </li>
   <li>
     <h2>I have an issue/want to thank you, how can I contact you?</h2>
-    <p>You can reach us by using the form on the 'contact us' page or sending an email to info at charcoalbasket.com</p>
+    <p>You can reach us by using the form on the <a href="http://localhost:4567/page/feedback.html">contact us page</a> or by sending an email to <strong>info at charcoalbasket.com</strong></p>
   </li>
 </ul>

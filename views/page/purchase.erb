@@ -14,10 +14,9 @@ end
 <p>All charcoal baskets are fabricated with <strong>10 gauge 3/4&quot; carbon or stainless flat expanded steel</strong>.</p>
 <p class="sub"><strong>NOTE:</strong> Baskets may be up to 1/4&quot over/under selected size.</p>
 <form action="<%= Configuration['checkout']['url'] %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
-
   <div class="checkoutTotalBox" style="clear: left;">
     <p>
-      <input type="checkbox" id="stainless_option" /> Use stainless steel (+ $<%= @product_info[:stainless][:price] - @product_info[:carbon][:price] %>0 )
+      <input type="checkbox" id="stainless_option" /> <label for="stainless_option" class="pointer">Use stainless steel (+ $<%= @product_info[:stainless][:price] - @product_info[:carbon][:price] %>0 )</label>
       <br /><a href="#" id="explain_stainless" class="sub">Why should I get stainless steel?</a>
     <div id="why_stainless" class="infobox hide">
       <p>
@@ -29,8 +28,7 @@ end
     <p>
       <span style="color: #f00; font-weight: bold;">FREE SHIPPING ON ADDITIONAL BASKETS!</span><br />
       <strong>Quantity:</strong>
-      <input type="text" id="item_quantity" name="item_quantity_1" value="1" size="1" />
-      <a href="#" class="sub">calculate</a><br />
+      <input type="text" id="item_quantity" name="item_quantity_1" value="1" size="1" /><br />
       <a href="#" id="explain_multiple" class="sub">Why should I order multiple baskets?</a>
     </p>
     <div id="why_multiple" style="clear: both;" class="infobox hide">
@@ -38,8 +36,9 @@ end
       <p>Having multiple charcoal baskets makes it much easier to swap fuel with minimal temperature loss during longer burns.</p>
       <center><a href="#" id="close_multiple" class="sub">close</a></center>
     </div>
-    <p><strong>Subtotal:</strong> $<%= @product_info[:carbon][:price] %></p>
+    <p><strong>Subtotal:</strong> $<span id="subtotal"><%= @product_info[:carbon][:price] %></span></p>
     <input type="image" name="Google Checkout" alt="Fast checkout through Google" src="<%= Configuration['checkout']['button'] %>" style="height: 46px; width: 180px;" />
+    <input type="hidden" id="spec" value="<%= @spec %>" />
     <input type="hidden" id="item_name" name="item_name_1" value="Charcoal Smoker Box" />
     <input type="hidden" id="item_description" name="item_description_1" value="12&quot; x 12&quot; x 6&quot; Depth" />
     <input type="hidden" id="item_price" name="item_price_1" value="69.99" />

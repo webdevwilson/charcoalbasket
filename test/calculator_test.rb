@@ -35,5 +35,14 @@ class CalculatorTest < Test::Unit::TestCase
     assert_equal 432, Calculator.calculate('square:12x12x6')[:carbon][:weight]
     
   end
+  
+  def test_order_calculation
+    
+    Configuration.load_file( File.join( File.dirname(__FILE__), 'test_config.yaml' ) )
+    assert_equal 145.99, Calculator.calculate_order('square:12x12x6', 1, true)
+    assert_equal 437.97, Calculator.calculate_order('square:12x12x6', 3, true)
+    assert_equal 74.99, Calculator.calculate_order('square:12x12x6', 1, false)
+    
+  end
 
 end

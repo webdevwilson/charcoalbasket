@@ -34,16 +34,16 @@ h1 { font-size: 2em; }
 .right { float: right; }
 .clearright { clear: right; }
 .hide { display: none; }
+.pointer { cursor: pointer; }
 
 .sub { font-size: 11px; }
 .infobox { padding: 5px; border: 1px solid #999; margin: 10px 0; }
 
-.checkoutTotalBox { padding-top: 10px; }
-.checkoutTotalBox table { background-color: #999; width: 400px; }
-.checkoutTotalBox tr { background-color: #fff; }
-.checkoutTotalBox th { background-color: #1A41A6; color: #fff; }
-.checkoutTotalBox .label { font-weight: bold; text-align: right; }
-.checkoutTotalBox .value { text-align: center; width: 25px; }
+.sizeTable { width: 400px; border: 1px solid #999; border-spacing: 0; }
+.sizeTable tr { background-color: #fff; }
+.sizeTable th { background-color: #999; color: #fff; }
+.sizeTable th, .sizeTable td { padding: 2px; padding-left: 5px; border-top: 1px solid #999; }
+.sizeTable td:first-child { border-right: 1px solid #999; }
 
 .checkout-amazon-product { float: left; margin: 0 10px; }
 

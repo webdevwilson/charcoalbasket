@@ -17,13 +17,13 @@ class Calculator
       is_custom = ( x != 12 || y != 12 || height != 6 )
     end
 
-    { :stainless => material_calculation(material, 'stainless', is_custom),
-      :carbon => material_calculation(material, 'carbon', is_custom), 
+    { :stainless => calculate_material(material, 'stainless', is_custom),
+      :carbon => calculate_material(material, 'carbon', is_custom), 
       :width => width, :height => height }
     
   end
   
-  def self.material_calculation(material, type, is_custom)
+  def self.calculate_material(material, type, is_custom)
     
     sheet_size = 48 * 96
     pricing = Configuration['pricing']
@@ -44,5 +44,5 @@ class Calculator
     { :price => price, :weight => weight }
     
   end
-    
+  
 end
