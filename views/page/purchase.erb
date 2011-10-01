@@ -3,7 +3,6 @@ if !@product_info
   redirect '/page/purchase/standard/size.html', 301
 end
 %>
-<img src="/images/charcoal-basket-finished-medium.jpg" style="float: right; width: 375px; height: 272px;" />
 <h1>  
 <% if @type == 'standard' %>
     12&quot; x 12&quot; x 6&quot; Charcoal Basket
@@ -11,6 +10,7 @@ end
     Charcoal Basket for <em><%= @brand['name'] %></em>
 <% end %>
 </h1>
+<img src="/images/charcoal-basket-finished-medium.jpg" style="float: right; width: 375px; height: 272px;" />
 <p>All charcoal baskets are fabricated with <strong>10 gauge 3/4&quot; carbon or stainless flat expanded steel</strong>.</p>
 <p class="sub"><strong>NOTE:</strong> Baskets may be up to 1/4&quot over/under selected size.</p>
 <form action="<%= Configuration['checkout']['url'] %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
