@@ -47,6 +47,8 @@ h1 { font-size: 2em; }
 
 .checkout-amazon-product { float: left; margin: 0 10px; }
 
+#custom_size .field label { font-weight: bold; display: block; float: left; width: 70px; }
+
 /**
  * jQuery lightBox plugin
  * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)

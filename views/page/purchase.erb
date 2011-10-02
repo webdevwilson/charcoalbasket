@@ -3,20 +3,64 @@ if !@product_info
   redirect '/page/purchase/standard/size.html', 301
 end
 %>
+<form action="<%= Configuration['checkout']['url'] %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
 <h1>  
 <% if @type == 'standard' %>
     12&quot; x 12&quot; x 6&quot; Charcoal Basket
 <% elsif @type == 'brand' %>
     Charcoal Basket for <em><%= @brand['name'] %></em>
+<% elsif @type == 'custom' %>
+    Order a <%= @shape.eql?('basket') ? 'Custom' : @shape[0..0].upcase + @shape[1..-1] %> Charcoal Basket
 <% end %>
 </h1>
 <img src="/images/charcoal-basket-finished-medium.jpg" style="float: right; width: 375px; height: 272px;" />
+<% if @type.eql? 'custom' %>
+<div id="custom_size">
+  <% if( @shape.eql? 'basket') %>
+  <p>
+    <label for="shape">Shape:</label>
+    <select id="shape" class="customSizeField">
+      <option value="round">Round</option>
+      <option value="square">Square</option>
+    </select>
+  </p>
+  <% else %>
+  <input id="shape" type="hidden" value="<%= @shape %>" />
+  <% end %>
+  <p>
+    <strong>Dimensions (inches):</strong>
+    <div id="square_fields">
+      <div class="field">
+        <label for="custom_width">Side 1:</label>
+        <input type="text" name="square_width_1" id="square_x" size="3" value="12" class="selectOnFocus customSizeField" /><br />
+      </div>
+      <div class="field">
+        <label for="custom_height">Side 2:</label>
+        <input type="text" name="square_height_1" id="square_y" size="3" value="12" class="selectOnFocus customSizeField" /><br />
+      </div>
+      <div class="field">
+        <label for="custom_depth">Depth:</label>
+        <input type="text" name="square_depth_1" id="square_z" size="3" value="6" class="selectOnFocus customSizeField" />
+      </div>
+    </div>
+    <div id="round_fields" style="display: none;">
+      <div class="field">
+        <label for="custom_height">Diameter:</label>
+        <input type="text" name="round_diameter_1" id="round_diameter" size="3" value="12" class="selectOnFocus customSizeField" /><br />
+      </div>
+      <div class="field">
+        <label for="custom_depth">Depth:</label>
+        <input type="text" name="round_depth_1" id="round_depth" size="3" value="6" class="selectOnFocus customSizeField" />
+      </div>
+    </div>
+  </p>
+</div>
+<% end %>
 <p>All charcoal baskets are fabricated with <strong>10 gauge 3/4&quot; carbon or stainless flat expanded steel</strong>.</p>
 <p class="sub"><strong>NOTE:</strong> Baskets may be up to 1/4&quot over/under selected size.</p>
-<form action="<%= Configuration['checkout']['url'] %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
   <div class="checkoutTotalBox" style="clear: left;">
     <p>
-      <input type="checkbox" id="stainless_option" /> <label for="stainless_option" class="pointer">Use stainless steel (+ $<%= @product_info[:stainless][:price] - @product_info[:carbon][:price] %>0 )</label>
+      <input type="checkbox" id="stainless_option" /> <label for="stainless_option" class="pointer">Use stainless steel (add $<%= @product_info[:stainless][:price] - @product_info[:carbon][:price] %>0)</label>
       <br /><a href="#" id="explain_stainless" class="sub">Why should I get stainless steel?</a>
     <div id="why_stainless" class="infobox hide">
       <p>
@@ -28,7 +72,7 @@ end
     <p>
       <span style="color: #f00; font-weight: bold;">FREE SHIPPING ON ADDITIONAL BASKETS!</span><br />
       <strong>Quantity:</strong>
-      <input type="text" id="item_quantity" name="item_quantity_1" value="1" size="1" /><br />
+      <input type="text" id="item_quantity" name="item_quantity_1" value="1" size="1" class="selectOnFocus" /><br />
       <a href="#" id="explain_multiple" class="sub">Why should I order multiple baskets?</a>
     </p>
     <div id="why_multiple" style="clear: both;" class="infobox hide">

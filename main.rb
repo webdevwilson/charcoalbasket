@@ -29,8 +29,15 @@ get '/purchase/*/*.html' do
   if @type == 'standard'
     @spec = 'square:12x12x6'
   elsif @type == 'brand'
-    @brand = Configuration['brands'].select { |it| puts("stub:#{it['stub']}"); it['stub'] == params[:splat][1] }.first
+    @brand = Configuration['brands'].select { |it| it['stub'] == params[:splat][1] }.first
     @spec = @brand['size'] || Configuration['default_size']
+  elsif @type == 'custom'
+    @shape = params[:splat][1]
+    if( @shape.eql? 'round' )
+      @spec = 'round:18x6'
+    else
+      @spec = 'square:12x12x6'
+    end
   end
   @product_info = Calculator.calculate(@spec)
   erb "page/purchase".to_sym

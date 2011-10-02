@@ -34,9 +34,8 @@ $(function() {
         var updateUI = function(data) {
             
             // get quantity, default to 1
-            var qty=parseInt(qi.val());
-            qty = qty > 1 ? qty : 1;
-                
+            var qty=qi.intVal(1);
+            
             // is stainless option checked?
             var stainless = si[0].checked;
             
@@ -47,7 +46,29 @@ $(function() {
         }
         
         si.change(recalculate);
-        qi.keyup(recalculate).mouseup(function() {this.select()});
+        qi.keyup(recalculate);
+        
+        // custom size fields
+        (function setupCustomSizeForm() {
+            
+            var specChanged = function() {
+              var s=$('#shape').val();
+              if(s == 'round') {
+                  $('#spec').val('round:'+$('#round_diameter').intVal(18)+'x'+$('#round_depth').intVal(6));
+              } else {
+                  $('#spec').val('square:'+$('#square_x').intVal(12)+'x'+$('#square_y').intVal(12)+'x'+$('#square_z').intVal(6));
+              }
+              recalculate();
+            };
+            
+            $('input.customSizeField').keyup(specChanged);
+            $('select.customSizeField').change(specChanged);
+         
+        })();
+        
+        // do select on focus fields
+        var select = function() { this.select(); };
+        $('.selectOnFocus').mouseup(select);
         
         (function infoBoxes() {
             $('a[id^="explain"]').click(function() {
@@ -66,6 +87,20 @@ $(function() {
             });
         })();
         
+        // show round or circular dimension fields
+        (toggleFields = function() {
+            $('div[id$="_fields"]').hide();
+            $('div#' + $('#shape').val() + '_fields').show();
+        })();
+        $('select#shape').change(toggleFields);
+        
+        
     })();
 
 });
+
+$.fn.intVal = function() {
+    var defVal=arguments[0] ? arguments[0] : 0;
+    var v=parseInt(this.val());
+    return isNaN(v) ? defVal : v;
+}
