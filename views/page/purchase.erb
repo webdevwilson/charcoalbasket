@@ -60,7 +60,7 @@ end
 <p class="sub"><strong>NOTE:</strong> Baskets may be up to 1/4&quot over/under selected size.</p>
   <div class="checkoutTotalBox" style="clear: left;">
     <p>
-      <input type="checkbox" id="stainless_option" /> <label for="stainless_option" class="pointer">Use stainless steel (add $<%= @product_info[:stainless][:price] - @product_info[:carbon][:price] %>0)</label>
+      <input type="checkbox" id="stainless_option" /> <label for="stainless_option" class="pointer">Use stainless steel (add $<%= ("%.1f" % (@product_info[:stainless][:price] - @product_info[:carbon][:price])) %>0)</label>
       <br /><a href="#" id="explain_stainless" class="sub">Why should I get stainless steel?</a>
     <div id="why_stainless" class="infobox hide">
       <p>
