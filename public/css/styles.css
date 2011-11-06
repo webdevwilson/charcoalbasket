@@ -10,7 +10,7 @@ h1 { font-size: 2em; }
 #header a { text-decoration: none; color: #999; }
 #header #header_text { }
 #navigation { background-color: #1A41A6; margin: 0px; }
-#navigation li { border-right: 1px solid #99c; cursor: pointer; }
+#navigation li { border-right: 1px solid #99c; cursor: pointer; height: 21px; }
 #navigation li:hover { background-color: #3A61c6; }
 #navigation li.purchase_link { background-color: #c00; float: right; border-right-width: 0px; padding: auto 17px; }
 #navigation li.purchase_link:hover { background-color: #99190D; }
