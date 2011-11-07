@@ -38,10 +38,11 @@ $(function() {
             
             // is stainless option checked?
             var stainless = si[0].checked;
-            
+            var stainlessPrice = ((data['stainless'].price - data['carbon'].price) * qty).toFixed(2);
             var subtotal = (data[ stainless ? 'stainless' : 'carbon' ].price * qty).toFixed(2);
             $('#subtotal').text(subtotal);
-            $('input[name="item_price"]').val(subtotal)
+            $('#stainless_option_price').text(stainlessPrice);
+            $('input[name="item_price"]').val(subtotal);
                 
         }
         
