@@ -11,7 +11,12 @@ weight:
   carbon: 4608
   stainless: 4608
 overwrite: me
+overwrite array:
+  a: an element
+  b: another element
 environment:
   test:
     key: value
     overwrite: value2
+    overwrite array:
+      c: added

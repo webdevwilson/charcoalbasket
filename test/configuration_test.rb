@@ -24,4 +24,14 @@ class ConfigurationTest < Test::Unit::TestCase
     
   end
   
+  def test_environment_should_merge_values
+    
+    Configuration.environment = 'test'
+    Configuration.load_file( File.join( File.dirname(__FILE__), 'test_config.yaml' ) )
+    
+    assert_equal 'another element', Configuration['overwrite array']['b']
+    assert_equal 'added', Configuration['overwrite array']['c']
+    
+  end
+  
 end
