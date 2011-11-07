@@ -43,6 +43,24 @@ feedback:
   subject: charcoalbasket.com Form Submission
 analytics:
   code: UA-249405-11
+checkout:
+  tax:
+    state: TN
+    rate: 0.0925
+  shipping:
+    from:
+      city: Franklin
+      state: TN
+      country: US
+      postal code: 37067
+    carriers:
+      - carrier: UPS
+        currency: USD
+        fixed-charge: 0
+        pickup: DROP_OFF
+        price: 25
+        type: Ground
+        additional-variable-charge-percent: 0
 environment:
   dev:
     checkout:

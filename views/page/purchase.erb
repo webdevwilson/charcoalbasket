@@ -81,16 +81,50 @@ end
       <center><a href="#" id="close_multiple" class="sub">close</a></center>
     </div>
     <p><strong>Subtotal:</strong> $<span id="subtotal"><%= @product_info[:carbon][:price] %></span></p>
-    <input type="image" name="Google Checkout" alt="Fast checkout through Google" src="<%= Configuration['checkout']['button'] %>" style="height: 46px; width: 180px;" />
+    <input type="image" name="Google Checkout" alt="Fast checkout through Google" src="<%= Configuration['checkout']['button'] %>" style="height: 46px; width: 112px;" />
     <input type="hidden" id="spec" value="<%= @spec %>" />
-    <input type="hidden" id="item_name" name="item_name_1" value="Charcoal Smoker Box" />
-    <input type="hidden" id="item_description" name="item_description_1" value="12&quot; x 12&quot; x 6&quot; Depth" />
-    <input type="hidden" id="item_price" name="item_price_1" value="69.99" />
-    <input type="hidden" id="item_currency" name="item_currency_1" value="USD" />
-    <input type="hidden" id="ship_method" name="ship_method_name_1" value="UPS Ground" />
-    <input type="hidden" id="ship_method_price" name="ship_method_price_1" value="15" />
-    <input type="hidden" id="tax_rate" name="tax_rate" value="0.0925" />
-    <input type="hidden" id="tax_us_state" name="tax_us_state" value="TN" />
+    
+    <!-- item information -->
+    <input type="hidden" name="shopping-cart.items.item-1.item-name" value="Charcoal Smoker Box" id="item_name" />
+    <input type="hidden" name="shopping-cart.items.item-1.item-description" value="12&quot; x 12&quot; x 6&quot; Depth" id="item_description" />
+    <input type="hidden" name="shopping-cart.items.item-1.unit-price" value="69.99" id="item_price" />
+    <input type="hidden" name="shopping-cart.items.item-1.unit-price.currency" value="USD" id="item_currency" />
+    <input type="hidden" name="shopping-cart.items.item-1.item-weight.value" value="<%= @product_info[:carbon][:weight] %>" id="item_weight" />
+    <input type="hidden" name="shopping-cart.items.item-1.item-weight.unit" value="LB" />
+    
+    <!-- local pickup -->
+    <%#*<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.name" value="Local Pickup - Nashville, TN"/>%>
+    <%#*<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price" value="0"/>%>
+    <%#*<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price.currency" value="USD" />%>
+   
+    <!-- shipping tables -->
+    <!--<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.price" value="<%= Configuration['checkout']['shipping']['carriers'][0]['price'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.price.currency" value="<%= Configuration['checkout']['shipping']['carriers'][0]['currency'] %>" /> -->
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.shipping-company" value="<%= Configuration['checkout']['shipping']['carriers'][0]['carrier'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.carrier-pickup" value="<%= Configuration['checkout']['shipping']['carriers'][0]['pickup'] %>"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.shipping-type" value="<%= Configuration['checkout']['shipping']['carriers'][0]['type'] %>"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.additional-fixed-charge" value="<%= Configuration['checkout']['shipping']['carriers'][0]['fixed-charge'] %>"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.additional-fixed-charge.currency" value="<%= Configuration['checkout']['shipping']['carriers'][0]['currency'] %>"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.additional-variable-charge-percent" value="<%= Configuration['checkout']['shipping']['carriers'][0]['additional-variable-charge-percent'] %>"/>
+    
+    <!-- package dimensions -->
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.unit" value="IN"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.value" value="8"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.length.unit" value="IN"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.length.value" value="12"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.unit" value="IN"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.value" value="12"/>
+    
+    <!-- shipping from information -->
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.id" value="ABC"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.city" value="<%= Configuration['checkout']['shipping']['from']['city'] %>"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.region" value="<%= Configuration['checkout']['shipping']['from']['state'] %>"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.country-code" value="<%= Configuration['checkout']['shipping']['from']['country'] %>"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.postal-code" value="<%= Configuration['checkout']['shipping']['from']['zip code'] %>"/>
+    
+    <!-- tax information -->
+    <input type="hidden" name="tax_rate" value="<%= Configuration['checkout']['tax']['rate'] %>" />
+    <input type="hidden" name="tax_us_state" value="<%= Configuration['checkout']['tax']['state'] %>" />
     <input type="hidden" name="_charset_" />
     <input type="hidden" name="analyticsdata" value="">
     <input type="hidden" id="continue_shopping_url" name="checkout-flow-support.merchant-checkout-flow-support.continue-shopping-url" value="http://www.charcoalbasket.com/page/order-received" />

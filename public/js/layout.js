@@ -37,12 +37,14 @@ $(function() {
             var qty=qi.intVal(1);
             
             // is stainless option checked?
+            var soc=stainless ? 'stainless' : 'carbon';
             var stainless = si[0].checked;
             var stainlessPrice = ((data['stainless'].price - data['carbon'].price) * qty).toFixed(2);
-            var subtotal = (data[ stainless ? 'stainless' : 'carbon' ].price * qty).toFixed(2);
+            var subtotal = (data[soc].price * qty).toFixed(2);
             $('#subtotal').text(subtotal);
             $('#stainless_option_price').text(stainlessPrice);
             $('input[name="item_price"]').val(subtotal);
+            $('#item_weight').val(data[soc].weight);
                 
         }
         
