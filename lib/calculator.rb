@@ -19,7 +19,7 @@ class Calculator
 
     { :stainless => calculate_material(material, 'stainless', is_custom),
       :carbon => calculate_material(material, 'carbon', is_custom), 
-      :width => width, :height => height }
+      :width => width + 2, :height => height + 2 }
     
   end
   

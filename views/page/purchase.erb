@@ -93,13 +93,13 @@ end
     <input type="hidden" name="shopping-cart.items.item-1.item-weight.unit" value="LB" />
     
     <!-- local pickup -->
-    <%#*<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.name" value="Local Pickup - Nashville, TN"/>%>
-    <%#*<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price" value="0"/>%>
-    <%#*<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price.currency" value="USD" />%>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.name" value="Local Pickup - Nashville, TN"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price" value="0"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price.currency" value="USD" />
    
     <!-- shipping tables -->
-    <!--<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.price" value="<%= Configuration['checkout']['shipping']['carriers'][0]['price'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.price.currency" value="<%= Configuration['checkout']['shipping']['carriers'][0]['currency'] %>" /> -->
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.price" value="<%= Configuration['checkout']['shipping']['carriers'][0]['price'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.price.currency" value="<%= Configuration['checkout']['shipping']['carriers'][0]['currency'] %>" />
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.shipping-company" value="<%= Configuration['checkout']['shipping']['carriers'][0]['carrier'] %>" />
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.carrier-pickup" value="<%= Configuration['checkout']['shipping']['carriers'][0]['pickup'] %>"/>
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.shipping-type" value="<%= Configuration['checkout']['shipping']['carriers'][0]['type'] %>"/>
@@ -108,12 +108,12 @@ end
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.additional-variable-charge-percent" value="<%= Configuration['checkout']['shipping']['carriers'][0]['additional-variable-charge-percent'] %>"/>
     
     <!-- package dimensions -->
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.unit" value="IN"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.value" value="8"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.unit" value="IN" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.value" value="8" id="item_height" />
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.length.unit" value="IN"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.length.value" value="12"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.length.value" value="12" id="item_length"/>
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.unit" value="IN"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.value" value="12"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.value" value="12" id="item_width"/>
     
     <!-- shipping from information -->
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.id" value="ABC"/>

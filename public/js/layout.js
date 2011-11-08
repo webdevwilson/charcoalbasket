@@ -41,6 +41,8 @@ $(function() {
             var stainless = si[0].checked;
             var stainlessPrice = ((data['stainless'].price - data['carbon'].price) * qty).toFixed(2);
             var subtotal = (data[soc].price * qty).toFixed(2);
+			$('#item_width, #item_length').val(data.width);
+			$('#item_height').val(data.height);
             $('#subtotal').text(subtotal);
             $('#stainless_option_price').text(stainlessPrice);
             $('input[name="item_price"]').val(subtotal);
