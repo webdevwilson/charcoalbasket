@@ -58,7 +58,7 @@ checkout:
         currency: USD
         fixed-charge: 0
         pickup: DROP_OFF
-        price: 25
+        price: 15
         type: Ground
         additional-variable-charge-percent: 0
 environment:
