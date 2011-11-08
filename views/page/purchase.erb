@@ -122,9 +122,11 @@ end
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.country-code" value="<%= Configuration['checkout']['shipping']['from']['country'] %>"/>
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.postal-code" value="<%= Configuration['checkout']['shipping']['from']['zip code'] %>"/>
     
-    <!-- tax information -->
-    <input type="hidden" name="tax_rate" value="<%= Configuration['checkout']['tax']['rate'] %>" />
-    <input type="hidden" name="tax_us_state" value="<%= Configuration['checkout']['tax']['state'] %>" />
+    <!-- tax rules -->
+	<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.tax-tables.default-tax-table.tax-rules.default-tax-rule-1.shipping-taxed" value="false"/>
+	<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.tax-tables.default-tax-table.tax-rules.default-tax-rule-1.rate" value="<%= Configuration['checkout']['tax']['rate'] %>"/>
+	<input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.tax-tables.default-tax-table.tax-rules.default-tax-rule-1.tax-areas.us-state-area-1.state" value="<%= Configuration['checkout']['tax']['state'] %>"/>
+		
     <input type="hidden" name="_charset_" />
     <input type="hidden" name="analyticsdata" value="">
     <input type="hidden" id="continue_shopping_url" name="checkout-flow-support.merchant-checkout-flow-support.continue-shopping-url" value="http://www.charcoalbasket.com/page/order-received" />
