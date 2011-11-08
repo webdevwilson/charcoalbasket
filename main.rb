@@ -5,7 +5,7 @@ require 'pony'
 require 'erb'
 require 'sinatra'
 require 'sinatra/content_for'
-require 'sinatra/reloader'
+#require 'sinatra/reloader'
 require 'calculator'
 require 'json'
 
@@ -17,7 +17,7 @@ def send_mail(email)
   Pony.mail( email.merge(MAIL_CONFIG) )
 end
 
-set :public, File.join( File.dirname(__FILE__), 'public' )
+set :public_folder, File.join( File.dirname(__FILE__), 'public' )
 set :views, File.join( File.dirname(__FILE__), 'views' )
 
 get '/' do
