@@ -9,7 +9,7 @@ require 'sinatra/content_for'
 require 'calculator'
 require 'json'
 
-Configuration.environment = ARGV[0] || 'prod'
+Configuration.environment = ( defined?(ARGV) ? ARGV[0] : nil ) || 'prod'
 
 MAIL_CONFIG = {}
 
