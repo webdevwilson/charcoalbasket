@@ -52,7 +52,7 @@ checkout:
       city: Franklin
       state: TN
       country: US
-      postal code: 37067
+      postal-code: 37067
     carriers:
       - carrier: UPS
         currency: USD
