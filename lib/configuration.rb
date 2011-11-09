@@ -18,6 +18,10 @@ class Configuration
       @@config
     end
     
+    def environment
+      @@environment
+    end
+    
     def environment=(env)
       reset
       @@environment = env
