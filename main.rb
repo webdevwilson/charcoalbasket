@@ -10,6 +10,7 @@ require 'calculator'
 require 'json'
 
 Configuration.environment = ( defined?(ARGV) ? ARGV[0] : nil ) || 'prod'
+puts "Starting charcoalbasket.com #{Configuration.environment} site..."
 
 MAIL_CONFIG = {}
 
