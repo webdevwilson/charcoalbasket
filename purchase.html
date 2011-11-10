@@ -1,8 +1,6 @@
-<% 
-if !@product_info
-  redirect '/page/purchase/standard/size.html', 301
-end
-%>
+---
+layout: default
+---
 <form action="<%= Configuration['checkout']['url'] %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
 <h1>  
 <% if @type == 'standard' %>
