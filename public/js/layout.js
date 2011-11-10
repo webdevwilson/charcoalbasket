@@ -45,7 +45,7 @@ $(function() {
 			$('#item_height').val(data.height);
             $('#subtotal').text(subtotal);
             $('#stainless_option_price').text(stainlessPrice);
-            $('input[name="item_price"]').val(subtotal);
+            $('#item_price').val(subtotal);
             $('#item_weight').val(data[soc].weight);
                 
         }

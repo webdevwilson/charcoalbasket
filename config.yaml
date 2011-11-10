@@ -56,7 +56,7 @@ checkout:
     carriers:
       - carrier: UPS
         currency: USD
-        fixed-charge: 0
+        fixed-charge: 5
         pickup: DROP_OFF
         price: 15
         type: Ground

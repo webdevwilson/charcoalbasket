@@ -87,7 +87,7 @@ end
     <!-- item information -->
     <input type="hidden" name="shopping-cart.items.item-1.item-name" value="Charcoal Smoker Box" id="item_name" />
     <input type="hidden" name="shopping-cart.items.item-1.item-description" value="12&quot; x 12&quot; x 6&quot; Depth" id="item_description" />
-    <input type="hidden" name="shopping-cart.items.item-1.unit-price" value="69.99" id="item_price" />
+    <input type="hidden" name="shopping-cart.items.item-1.unit-price" value="<%= @product_info[:carbon][:price] %>" id="item_price" />
     <input type="hidden" name="shopping-cart.items.item-1.unit-price.currency" value="USD" id="item_currency" />
     <input type="hidden" name="shopping-cart.items.item-1.item-weight.value" value="<%= @product_info[:carbon][:weight] %>" id="item_weight" />
     <input type="hidden" name="shopping-cart.items.item-1.item-weight.unit" value="LB" />
