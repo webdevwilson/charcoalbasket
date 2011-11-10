@@ -1,0 +1,49 @@
+<h1>Frequently Asked Questions</h1>
+<ul>
+  <li>
+    <h2>What type of material do you use?</h2>
+    <p>We use 10 gauge, 3/4" flat expanded carbon or stainless steel.  Carbon is good up to
+    700&deg; and stainless can handle temperatures up to 1500&deg;</p>
+  </li>
+  <li>
+    <h2>Should I get stainless?</h2>
+    <p>You should get a stainless basket if you anticipate your smoker temperatures to get above
+    700&deg;.  This is typically not possible in a run-of-the-mill consumer grade smoker.  Some larger
+    smokers or modified smokers may reach higher temperatures.  Also, you may consider getting stainless
+    if you plan on using it alot.  Stainless is a more durable material.</p>
+  </li>
+  <li>
+    <h2>How long until I receive my order?</h2>
+    <p>We keep carbon 12&quot;x12&quot;x6&quot; baskets in stock and ship them out within a day or two.  Anything
+    else may take a week or so to get shipped.  In general, please allow 2-3 weeks for delivery.</p>
+  </li>
+  <li>
+    <h2>What size is the basket for x smoker?</h2>
+    <p>Dimensions shown are in inches.  Last dimension is the depth.</p>
+    <table class="sizeTable">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Configuration['brands'].each do |brand| %>
+        <tr>
+          <td><%= brand['name'] %></td>
+          <td><%= /[a-z]+:([0-9x]+)/.match(brand['size'] || Configuration['default_size'])[1] %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h2>I have an issue/want to thank you, how can I contact you?</h2>
+    <p>You can reach us by using the form on the <a href="http://localhost:4567/page/feedback.html">contact us page</a> or by sending an email to <strong>info at charcoalbasket.com</strong></p>
+  </li>
+  <li>
+    <h2>Why do you no longer offer a painting option?</h2>
+    <p>We do not recommend painting your basket and have decided to no longer offer the option.  If you must
+    have your basket painted you can pick up a can of 1200&deg; barbecue paint at Lowe's or Home Depot.</p>
+  </li>
+</ul>

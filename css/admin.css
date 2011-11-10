@@ -1,0 +1,29 @@
+
+body { background-color: #FFCD11; font-family: Arial, Helvetica; margin: 0; padding: 0; font-size: 86.5%; }
+.body { width: 80%; margin: auto; background-color: #fff; }
+.content { clear: both; padding: 5px; min-height: 500px; }
+
+a:link { color: #99190D; }
+a:visited { color: #99190D; }
+
+ul.navigation { margin: 0px; padding: 0px; }
+ul.navigation li { list-style: none; float: left; padding: 5px; }
+
+h1.form-heading { font-size: 1.4em; }
+
+table.page-list { width: 100%; background-color: #ccc; }
+table.page-list th { color: #fff; background-color: #B8190D; }
+table.page-list td { padding: 5px; background-color: #fff; }
+
+div.field { margin: 5px 0px; }
+div.field label { font-weight: bold; }
+div.field input,
+div.field textarea,
+div.field select { width: 50%; }
+div.field li.error { background-color: #fff; border-width: 0px; }
+div.buttons { margin: 5px 0px; }
+
+.flash { font-weight: bold; font-size: .9em; padding: 10px; margin: 5px; }
+.message { color: #0A3; background-color: #E0FFFF; border: 2px solid #0A3; }
+.warning { color: #CC0; background-color: #FFC; border: 2px solid #CC0; }
+.error   { color: #F00; background-color: #FFE0E0; border: 2px solid #F00; }
