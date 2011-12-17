@@ -65,6 +65,15 @@ class AppTest < Test::Unit::TestCase
     assert_contain 'Page Not Found'
   end
   
+  def test_circular_defaults_to_18_by_6
+    
+    visit '/purchase/custom/round.html'
+    
+    assert_equal 18, field_named('round_diameter_1').value.to_i
+    assert_equal 6, field_named('round_depth_1').value.to_i
+    
+  end
+  
   def test_legacy_redirects
   
     visit '/page/minion-method'
