@@ -1,22 +1,17 @@
-# 
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
- 
-
 require 'rubygems'
 require 'rake'
 require 'rake/clean'
-require 'rake/gempackagetask'
-require 'rake/rdoctask'
+require 'rubygems/package_task'
+require 'rdoc/task'
 require 'rake/testtask'
-require 'spec/rake/spectask'
+# require 'spec/rake/spectask'
 
 spec = Gem::Specification.new do |s|
   s.name = 'charcoalbasket'
   s.version = '0.0.1'
   s.has_rdoc = true
   s.extra_rdoc_files = ['README', 'LICENSE']
-  s.summary = 'Your summary here'
+  s.summary = ''
   s.description = s.summary
   s.author = ''
   s.email = ''
@@ -24,6 +19,9 @@ spec = Gem::Specification.new do |s|
   s.files = %w(LICENSE README Rakefile) + Dir.glob("{bin,lib,spec}/**/*")
   s.require_path = "lib"
   s.bindir = "bin"
+  s.add_dependency 'pony', '>= 1.4'
+  s.add_dependency 'sinatra', '>= 1.3.1'
+  s.add_dependency 'sinatra-content-for', '>= 0.2'
   s.add_dependency 'json', '>= 1.5.3'
 end
 
