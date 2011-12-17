@@ -23,7 +23,11 @@ VIEWS = File.join( File.dirname(__FILE__), 'views' )
 set :views, VIEWS
 
 not_found do
-  erb 'page/page-not-found'.to_sym
+  erb 'errors/page-not-found'.to_sym
+end
+
+error do
+  erb 'errors/internal-error'.to_sym
 end
 
 get '/' do
