@@ -19,7 +19,12 @@ def send_mail(email)
 end
 
 set :public_folder, File.join( File.dirname(__FILE__), 'public' )
-set :views, File.join( File.dirname(__FILE__), 'views' )
+VIEWS = File.join( File.dirname(__FILE__), 'views' )
+set :views, VIEWS
+
+not_found do
+  erb 'page/page-not-found'.to_sym
+end
 
 get '/' do
   redirect '/page/home'
@@ -44,18 +49,32 @@ get '/purchase/*/*.html' do
   erb "page/purchase".to_sym
 end
 
+get '/forms/:page' do
+  if params[:page] == 'send'
+    raise Sinatra::NotFound.new
+  end
+end
+
 get '/page/:page' do
   if /\.html/ =~ params[:page]
-    erb "page/#{params[:page][0..-6]}".to_sym
+    file_path = "page/#{params[:page][0..-6]}"
+    if File.exists?( File.join( VIEWS, file_path ) + ".erb" )
+      erb file_path.to_sym
+    else
+      raise Sinatra::NotFound.new
+    end
   else
     
-    if( params[:page] == 'purchase' )
+    if params[:page] == 'purchase'
       redirect_url = '/purchase/standard/size.html'
+    elsif params[:page] == 'grills'
+      raise Sinatra::NotFound.new
     else
       redirect_url = "/page/#{params[:page]}.html"
     end
     
     redirect redirect_url, 301
+    
   end
 end
 
