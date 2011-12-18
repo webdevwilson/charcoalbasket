@@ -38,15 +38,19 @@ get '/purchase/*/*.html' do
   @type = params[:splat][0]
   if @type == 'standard'
     @spec = 'square:12x12x6'
+    @name = 'Standard Charcoal Basket'
   elsif @type == 'brand'
     @brand = Configuration['brands'].select { |it| it['stub'] == params[:splat][1] }.first
     @spec = @brand['size'] || Configuration['default_size']
+    @name = "Charcoal Basket for #{@brand['name']}"
   elsif @type == 'custom'
     @shape = params[:splat][1]
     if( @shape.eql? 'round' )
       @spec = 'round:18x6'
+      @name = 'Custom Charcoal Basket (Round)'
     else
       @spec = 'square:12x12x6'
+      @name = 'Custom Charcoal Basket (Square)'
     end
   end
   @product_info = Calculator.calculate(@spec)

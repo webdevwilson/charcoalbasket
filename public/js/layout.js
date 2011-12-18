@@ -44,13 +44,23 @@ $(function() {
                 var soc=stainless ? 'stainless' : 'carbon';
                 var stainlessPrice = ((data['stainless'].price - data['carbon'].price) * qty).toFixed(2);
                 var subtotal = (data[soc].price * qty).toFixed(2);
-                $('#item_width, #item_length').val(data.width);
-                $('#item_height').val(data.height);
+                $('#item_width, #item_length').val(data.package_width);
+                $('#item_height').val(data.package_height);
                 $('#subtotal').text(subtotal);
                 $('#stainless_option_price').text(stainlessPrice);
-                $('#item_price').val(subtotal);
+                $('#item_price').val(data[soc].price);
                 $('#item_weight').val(data[soc].weight);
                 
+                // update description
+                var text,
+                dim = data.dimensions;
+                x = "\" x ";
+                if(data.shape == 'square')
+                    text = dim.x + x + dim.y + x + dim.height + "\" Depth";
+                else
+                    text = dim.diameter + x + dim.height + "\" Depth";
+                if(stainless) text = "Stainless " + text;
+                $('#item_description').val(text);
             }
         
             si.change(recalculate);
