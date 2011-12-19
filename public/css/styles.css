@@ -61,7 +61,7 @@ input.button:active { background-color: #f0f0f0; }
 
 .checkout-amazon-product { float: left; margin: 0 10px; }
 
-#custom_size .field label { font-weight: bold; display: block; float: left; width: 70px; }
+#custom_size .field label { font-weight: bold; display: block; float: left; width: 80px; }
 
 /**
  * jQuery lightBox plugin
