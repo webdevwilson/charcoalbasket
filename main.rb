@@ -93,8 +93,8 @@ get '/*.json' do
 end
 
 post '/forms/feedback.html' do
-  params[:to] = Configuration.feedback['to']
-  params[:subject] = Configuration.feedback['subject']
+  params[:to] = Configuration['feedback']['to']
+  params[:subject] = Configuration['feedback']['subject']
   params[:body] = <<EOF
 	Contact Us Form Received:
 
