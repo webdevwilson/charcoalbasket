@@ -2,6 +2,20 @@ body { background: #ececec; font-family: 'Istok Web', sans-serif, helvetica, ari
 
 h1 { font-size: 2em; }
 
+input.button {
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    background-color: #eee;
+    border: 1px solid #999;
+    color: #666;
+    padding: 6px 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+input.button:hover { background-color: #ccc; }
+input.button:active { background-color: #f0f0f0; }
+
 #container { background-color: #fff; border: 1px solid #ccc; }
 
 #header { color: #fff; }
