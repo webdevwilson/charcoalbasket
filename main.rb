@@ -99,7 +99,7 @@ post '/forms/feedback.html' do
 	Contact Us Form Received:
 
 Name: #{params[:name]}
-Email Address: #{params[:from]}
+Email Address: #{params[:email_address]}
 Comments:
 
 #{params[:comments]}
