@@ -93,11 +93,11 @@ get '/*.json' do
 end
 
 post '/forms/feedback.html' do
+  params[:subject] = 'charcoalbasket.com feedback'
   params[:to] = Configuration['feedback']['to']
   params[:subject] = Configuration['feedback']['subject']
+  params[:from] = params[:email_address]
   params[:body] = <<EOF
-	Contact Us Form Received:
-
 Name: #{params[:name]}
 Email Address: #{params[:email_address]}
 Comments:
