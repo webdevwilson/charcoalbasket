@@ -52,9 +52,14 @@
       </div>
       <div style="clear: both;"></div>
       <div id="footer">
-        <p>charcoalbasket.com</p>
-        <a href="/page/privacy.html">Privacy Policy</a> |
-        <a href="/page/terms-conditions.html">Terms & Conditions</a>
+        <div style="float: left;">
+          <div class="g-plusone" data-size="medium" data-annotation="inline" data-href="http://charcoalbasket.com"></div>
+        </div>
+        <div style="clear: both;">
+          <p>charcoalbasket.com</p>
+          <a href="/page/privacy.html">Privacy Policy</a> |
+          <a href="/page/terms-conditions.html">Terms & Conditions</a>
+        </div>
       </div>
     </div>
     <script type="text/javascript">
@@ -64,7 +69,8 @@
       '/js/layout.js',
       'http://www.google-analytics.com/ga.js',
       'http://checkout.google.com/files/digital/ga_post.js',
-      'http://connect.facebook.net/en_US/all.js#xfbml=1', function() {
+      'http://connect.facebook.net/en_US/all.js#xfbml=1',
+      'https://apis.google.com/js/plusone.js', function() {
         pageTracker = _gat._getTracker('<%= Configuration['analytics']['code'] %>');
         pageTracker._initData();
         pageTracker._trackPageview();
