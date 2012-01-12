@@ -6,6 +6,9 @@ brands:
     stub: brinkmann-cimarron-deluxe
   - name: Brinkmann Smoke King Deluxe
     stub: brinkmann-smoke-king-deluxe
+  - name: Browning Offset
+    stub: browning-offset
+    size: square:17x11x8
   - name: Charbroil Silver
     stub: charbroil-silver
     size: square:9x14x5
@@ -13,6 +16,9 @@ brands:
     stub: chargriller-side-fire-box
   - name: Chargriller Smokin' Pro
     stub: chargriller-smokin-pro
+  - name: Kingsford Wagon Boss
+    stub: kingsford-wagon-boss
+    size: square:10x14x6
   - name: New Braunsfel Bandera
     stub: new-braunsfel-bandera
   - name: New Braunsfel Longhorn Deluxe
@@ -20,6 +26,12 @@ brands:
     size: square:15x15x8
   - name: Old Country 20&quot;
     stub: old-country-20
+  - name: Old Country BBQ Pits Pecos
+    stub: old-county-bbq-pits-pecos
+    size: square:16x16x8
+  - name: Outdoor Gourmet Triton
+    stub: outdoor-gourmet-triton
+    size: square:10x14x6
   - name: RD Horizon Offset 20&quot;
     stub: rd-horizon-offset-20
     size: square:15x15x8
