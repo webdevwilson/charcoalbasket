@@ -8,7 +8,7 @@ brands:
     stub: brinkmann-smoke-king-deluxe
   - name: Browning Offset
     stub: browning-offset
-    size: square:17x11x8
+    size: square:11x17x8
   - name: Charbroil Silver
     stub: charbroil-silver
     size: square:9x14x5
@@ -28,7 +28,7 @@ brands:
     stub: old-country-20
   - name: Old Country BBQ Pits Pecos
     stub: old-county-bbq-pits-pecos
-    size: square:16x16x8
+    size: square:15x15x8
   - name: Outdoor Gourmet Triton
     stub: outdoor-gourmet-triton
     size: square:10x14x6
