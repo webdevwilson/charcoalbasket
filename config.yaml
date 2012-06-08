@@ -12,6 +12,8 @@ brands:
   - name: Charbroil Silver
     stub: charbroil-silver
     size: square:9x14x5
+  - name: Chargriller Duo
+    stub: chargriller-duo
   - name: Chargriller Side Fire Box
     stub: chargriller-side-fire-box
   - name: Chargriller Smokin' Pro
