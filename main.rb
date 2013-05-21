@@ -9,7 +9,7 @@ require 'sinatra/content_for'
 require 'calculator'
 require 'json'
 
-Configuration.environment = 'prod' # ( defined?($*) ? $*[0] : nil ) || 'prod'
+Configuration.environment = $*[0] || 'prod'
 puts "Starting charcoalbasket.com #{Configuration.environment} site..."
 
 MAIL_CONFIG = {}

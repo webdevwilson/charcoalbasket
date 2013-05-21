@@ -91,21 +91,24 @@ end
     <input type="hidden" name="shopping-cart.items.item-1.unit-price.currency" value="USD" id="item_currency" />
     <input type="hidden" name="shopping-cart.items.item-1.item-weight.value" value="<%= @product_info[:carbon][:weight] %>" id="item_weight" />
     <input type="hidden" name="shopping-cart.items.item-1.item-weight.unit" value="LB" />
-
+    
     <!-- local pickup -->
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.name" value="Local Pickup - Nashville, TN"/>
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price" value="0"/>
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price.currency" value="USD" />
 
     <!-- shipping tables -->
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.price" value="<%= Configuration['checkout']['shipping']['carriers'][0]['price'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.price.currency" value="<%= Configuration['checkout']['shipping']['carriers'][0]['currency'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.shipping-company" value="<%= Configuration['checkout']['shipping']['carriers'][0]['carrier'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.carrier-pickup" value="<%= Configuration['checkout']['shipping']['carriers'][0]['pickup'] %>"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.shipping-type" value="<%= Configuration['checkout']['shipping']['carriers'][0]['type'] %>"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.additional-fixed-charge" value="<%= Configuration['checkout']['shipping']['carriers'][0]['fixed-charge'] %>"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.additional-fixed-charge.currency" value="<%= Configuration['checkout']['shipping']['carriers'][0]['currency'] %>"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-1.additional-variable-charge-percent" value="<%= Configuration['checkout']['shipping']['carriers'][0]['additional-variable-charge-percent'] %>"/>
+    <% Configuration['shipping'].each_with_index do |method,i| %>
+    <!-- <%= "#{method['carrier']} #{method['type']}" %> -->
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.price" value="<%= method['price'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.price.currency" value="<%= method['currency'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.shipping-company" value="<%= method['carrier'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.carrier-pickup" value="<%= method['pickup'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.shipping-type" value="<%= method['type'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.additional-fixed-charge" value="<%= method['fixed-charge'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.additional-fixed-charge.currency" value="<%= method['currency'] %>" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.additional-variable-charge-percent" value="<%= method['additional-variable-charge-percent'] %>" />
+    <% end %>
 
     <!-- package dimensions -->
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.unit" value="IN" />
@@ -114,6 +117,8 @@ end
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.length.value" value="12" id="item_length"/>
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.unit" value="IN"/>
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.value" value="12" id="item_width"/>
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.weight.unit" value="LB" />
+    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.weight.value" value="<%= @product_info[:carbon][:weight] %>" />
 
     <!-- shipping from information -->
     <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.id" value="ABC"/>

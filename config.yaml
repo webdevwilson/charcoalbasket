@@ -67,19 +67,35 @@ checkout:
       state: TN
       country: US
       postal-code: 37067
-    carriers:
-      - carrier: UPS
-        currency: USD
-        fixed-charge: 5
-        pickup: DROP_OFF
-        price: 15
-        type: Ground
-        additional-variable-charge-percent: 0
+shipping:
+  - carrier: UPS
+    currency: USD
+    fixed-charge: 5
+    pickup: DROP_OFF
+    price: 15
+    type: Ground
+    additional-variable-charge-percent: 5
+  - carrier: UPS
+    currency: USD
+    fixed-charge: 5
+    pickup: DROP_OFF
+    price: 15
+    type: 3 Day Select
+    additional-variable-charge-percent: 5
+  - carrier: UPS
+    currency: USD
+    fixed-charge: 5
+    pickup: DROP_OFF
+    price: 15
+    type: Next Day Air
+    additional-variable-charge-percent: 5
 environment:
   dev:
     checkout:
       url: https://sandbox.google.com/checkout/api/checkout/v2/checkoutForm/Merchant/120471905698092
       button: https://sandbox.google.com/checkout/buttons/buy.gif?merchant_id=120471905698092&amp;w=117&amp;h=48&amp;style=white&amp;variant=text&amp;loc=en_US
+    analytics:
+      code: UA-XXXXXXXX-1
   prod:    
     checkout:
       url: https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/835246094689493
