@@ -42,13 +42,13 @@ brands:
     size: square:15x15x8
 pricing:
   material:
-    carbon: 50
-    stainless: 400
+    carbon: 60
+    stainless: 525
   labor:
     carbon: 30
     stainless: 30
   custom: 15
-  markup: 2.15
+  markup: 2.1
 weight:
     carbon: 57.6
     stainless: 65.6
