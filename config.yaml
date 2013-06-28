@@ -6,12 +6,22 @@ brands:
     stub: brinkmann-cimarron-deluxe
   - name: Brinkmann Smoke King Deluxe
     stub: brinkmann-smoke-king-deluxe
+  - name: Brinkmann Smoke N' Pit
+    stub: brinkmann-smoke-n-pit
+    size: square:9x12x8
+  - name: Brinkmann Trailmaster Limited
+    stub: brinkmann-trailmaster-limited
   - name: Browning Offset
     stub: browning-offset
     size: square:11x17x8
-  - name: Charbroil Silver
+  - name: Char-Broil American Gourmet 700 Series
+    stub: charbroil-american-gourmet-700
+    size: square:10x12x6
+  - name: Char-Broil Silver
     stub: charbroil-silver
     size: square:9x14x5
+  - name: Char-Broil Oklahoma Joe
+    stub: charbroil-oklahoma-joe
   - name: Chargriller Duo
     stub: chargriller-duo
   - name: Chargriller Side Fire Box
@@ -21,6 +31,9 @@ brands:
   - name: Kingsford Wagon Boss
     stub: kingsford-wagon-boss
     size: square:10x14x6
+  - name: Landmann Black Dog 42XT
+    stub: landmann-black-dog-42xt
+    size: square:14x15x7
   - name: New Braunsfel Bandera
     stub: new-braunsfel-bandera
   - name: New Braunsfel Longhorn Deluxe
@@ -40,6 +53,9 @@ brands:
   - name: RD Horizon Offset 24&quot;
     stub: rd-horizon-offset-24
     size: square:15x15x8
+  - name: Weber Smokey Mountain Cooker 18.5"
+    stub: weber-smokey-mountain-cooker-18-5
+    size: round:12x6
 pricing:
   material:
     carbon: 60
