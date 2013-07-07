@@ -5,7 +5,6 @@ require 'pony'
 require 'erb'
 require 'sinatra'
 require 'sinatra/content_for'
-#require 'sinatra/reloader'
 require 'calculator'
 require 'json'
 
@@ -21,6 +20,12 @@ end
 set :public_folder, File.join( File.dirname(__FILE__), 'public' )
 VIEWS = File.join( File.dirname(__FILE__), 'views' )
 set :views, VIEWS
+
+get '/public/*' do
+  cache_length = 60 * 60 * 24
+  cache_control :public, :max_age => cache_length
+  'this is public'
+end
 
 not_found do
   erb 'errors/page-not-found'.to_sym

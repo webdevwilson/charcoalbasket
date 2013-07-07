@@ -20,7 +20,7 @@ spec = Gem::Specification.new do |s|
   s.require_path = "lib"
   s.bindir = "bin"
   s.add_dependency 'pony', '>= 1.4'
-  s.add_dependency 'sinatra', '>= 1.3.1'
+  s.add_dependency 'sinatra', '>= 1.4.3'
   s.add_dependency 'sinatra-content-for', '>= 0.2'
   s.add_dependency 'json', '>= 1.5.3'
 end
