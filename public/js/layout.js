@@ -10,7 +10,7 @@ $(function() {
         });
     })();
     
-    if( $('#BB_BuyButtonForm').length == 1 ) {
+    if( $('#BB_BuyButtonForm').length === 1 ) {
         (function setupPurchasePage() {
         
             var specCache = {};
@@ -55,13 +55,13 @@ $(function() {
                 var text,
                 dim = data.dimensions;
                 x = "\" x ";
-                if(data.shape == 'square')
-                    text = dim.x + x + dim.y + x + dim.height + "\" Depth";
-                else
-                    text = dim.diameter + x + dim.height + "\" Depth";
+                if(data.shape === 'square') text = dim.x + x + dim.y + x + dim.height + "\" Depth";
+                else text = dim.diameter + x + dim.height + "\" Depth";
+                text = $('#item_name').val() + ' ' + text;
+                
                 if(stainless) text = "Stainless " + text;
                 $('#item_description').val(text);
-            }
+            };
         
             si.change(recalculate);
             qi.keyup(recalculate);
@@ -71,7 +71,7 @@ $(function() {
             
                 var specChanged = function() {
                     var s=$('#shape').val();
-                    if(s == 'round') {
+                    if(s === 'round') {
                         $('#spec').val('round:'+$('#round_diameter').intVal(18)+'x'+$('#round_depth').intVal(6));
                     } else {
                         $('#spec').val('square:'+$('#square_x').intVal(12)+'x'+$('#square_y').intVal(12)+'x'+$('#square_z').intVal(6));
@@ -93,7 +93,7 @@ $(function() {
             (function infoBoxes() {
                 $('a[id^="explain"]').click(function() {
                     var n=$('#why_' + $(this).attr('id').substring(8));
-                    if(n.attr('state') != 'open') {
+                    if(n.attr('state') !== 'open') {
                         n.fadeIn().attr('state','open');
                     } else {
                         n.fadeOut().attr('state','closed');
@@ -127,4 +127,4 @@ $.fn.intVal = function() {
     var defVal=arguments[0] ? arguments[0] : 0;
     var v=parseInt(this.val());
     return isNaN(v) ? defVal : v;
-}
+};

@@ -1,139 +1,119 @@
 <% 
 if !@product_info
-  redirect '/page/purchase/standard/size.html', 301
+redirect '/page/purchase/standard/size.html', 301
 end
 %>
 <form action="<%= Configuration['checkout']['url'] %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
-  <h1>  
-    <% if @type == 'standard' %>
-      12&quot; x 12&quot; x 6&quot; Charcoal Basket
-    <% elsif @type == 'brand' %>
-      Charcoal Basket for <em><%= @brand['name'] %></em>
-    <% elsif @type == 'custom' %>
-      Order a <%= @shape.eql?('basket') ? 'Custom' : @shape[0..0].upcase + @shape[1..-1] %> Charcoal Basket
-    <% end %>
-  </h1>
-  <img src="/images/charcoal-basket-finished-medium.jpg" style="float: right; width: 375px; height: 272px;" />
-  <% if @type.eql? 'custom' %>
+    <h1>  
+        <% if @type == 'standard' %>
+        12&quot; x 12&quot; x 6&quot; Charcoal Basket
+        <% elsif @type == 'brand' %>
+        Charcoal Basket for <em><%= @brand['name'] %></em>
+        <% elsif @type == 'custom' %>
+        Order a <%= @shape.eql?('basket') ? 'Custom' : @shape[0..0].upcase + @shape[1..-1] %> Charcoal Basket
+        <% end %>
+    </h1>
+    <img src="/images/charcoal-basket-finished-medium.jpg" style="float: right; width: 375px; height: 272px;" />
+    <% if @type.eql? 'custom' %>
     <div id="custom_size">
-      <% if( @shape.eql? 'basket') %>
+        <% if( @shape.eql? 'basket') %>
         <p>
-          <label for="shape">Shape:</label>
-          <select id="shape" class="customSizeField">
-            <option value="square">Square</option>
-            <option value="round">Round</option>
-          </select>
+            <label for="shape">Shape:</label>
+            <select id="shape" class="customSizeField">
+                <option value="square">Square</option>
+                <option value="round">Round</option>
+            </select>
         </p>
-      <% else %>
+        <% else %>
         <input id="shape" type="hidden" value="<%= @shape %>" />
-      <% end %>
-      <p>
-        <strong>Dimensions (inches):</strong>
-      <div id="square_fields">
-        <div class="field">
-          <label for="custom_width">Side 1:</label>
-          <input type="text" name="square_width_1" id="square_x" size="3" value="12" class="selectOnFocus customSizeField" /><br />
+        <% end %>
+        <p>
+            <strong>Dimensions (inches):</strong>
+        <div id="square_fields">
+            <div class="field">
+                <label for="square_x">Side 1:</label>
+                <input type="text" name="square_width_1" id="square_x" size="3" value="12" class="selectOnFocus customSizeField" /><br />
+            </div>
+            <div class="field">
+                <label for="square_y">Side 2:</label>
+                <input type="text" name="square_height_1" id="square_y" size="3" value="12" class="selectOnFocus customSizeField" /><br />
+            </div>
+            <div class="field">
+                <label for="square_z">Depth:</label>
+                <input type="text" name="square_depth_1" id="square_z" size="3" value="6" class="selectOnFocus customSizeField" />
+            </div>
         </div>
-        <div class="field">
-          <label for="custom_height">Side 2:</label>
-          <input type="text" name="square_height_1" id="square_y" size="3" value="12" class="selectOnFocus customSizeField" /><br />
+        <div id="round_fields" style="display: none;">
+            <div class="field">
+                <label for="round_diameter">Diameter:</label>
+                <input type="text" name="round_diameter_1" id="round_diameter" size="3" value="18" class="selectOnFocus customSizeField" /><br />
+            </div>
+            <div class="field">
+                <label for="round_depth">Depth:</label>
+                <input type="text" name="round_depth_1" id="round_depth" size="3" value="6" class="selectOnFocus customSizeField" />
+            </div>
         </div>
-        <div class="field">
-          <label for="custom_depth">Depth:</label>
-          <input type="text" name="square_depth_1" id="square_z" size="3" value="6" class="selectOnFocus customSizeField" />
-        </div>
-      </div>
-      <div id="round_fields" style="display: none;">
-        <div class="field">
-          <label for="custom_height">Diameter:</label>
-          <input type="text" name="round_diameter_1" id="round_diameter" size="3" value="18" class="selectOnFocus customSizeField" /><br />
-        </div>
-        <div class="field">
-          <label for="custom_depth">Depth:</label>
-          <input type="text" name="round_depth_1" id="round_depth" size="3" value="6" class="selectOnFocus customSizeField" />
-        </div>
-      </div>
-      </p>
     </div>
-  <% end %>
-  <p>All charcoal baskets are fabricated with <strong>10 gauge 3/4&quot; carbon (or stainless) flat expanded steel</strong>.</p>
-  <p class="sub"><strong>NOTE:</strong> Baskets may be up to 1/4&quot over/under selected size.</p>
-  <div class="checkoutTotalBox" style="clear: left;">
-    <p>
-      <input type="checkbox" id="stainless_option" /> <label for="stainless_option" class="pointer">Use stainless steel (add $<span id="stainless_option_price"><%= ("%.2f" % (@product_info[:stainless][:price] - @product_info[:carbon][:price])) %></span>)</label>
-      <br /><a href="#" id="explain_stainless" class="sub">Why should I get stainless steel?</a>
-    <div id="why_stainless" class="infobox hide">
-      <p>
-        Carbon steel should only be used up to 750&deg;, stainless steel can be used up to 1500&deg;.  Most consumer grade smokers
-        will not exceed 750&deg;.  Some people would like more durable material or have large smokers capable of reaching higher temperatures.
-      </p>
-      <center><a href="#" id="close_stainless" class="sub">close</a></center>
-    </div>
-    <p>
-      <span style="color: #f00; font-weight: bold;">FREE SHIPPING ON ADDITIONAL BASKETS!</span><br />
-      <strong>Quantity:</strong>
-      <input type="text" id="item_quantity" name="shopping-cart.items.item-1.quantity" value="1" size="1" class="selectOnFocus" /><br />
-      <a href="#" id="explain_multiple" class="sub">Why should I order multiple baskets?</a>
-    </p>
-    <div id="why_multiple" style="clear: both;" class="infobox hide">
-      <h3>Why should I order multiple baskets?</h3>
-      <p>Having multiple charcoal baskets makes it much easier to swap fuel with minimal temperature loss during longer burns.</p>
-      <center><a href="#" id="close_multiple" class="sub">close</a></center>
-    </div>
-    <p><strong>Subtotal:</strong> $<span id="subtotal"><%= @product_info[:carbon][:price] %></span></p>
-    <input type="image" name="Google Checkout" alt="Fast checkout through Google" src="<%= Configuration['checkout']['button'] %>" style="height: 46px; width: 112px;" />
-    <input type="hidden" id="spec" value="<%= @spec %>" />
-
-    <!-- item information -->
-    <input type="hidden" name="shopping-cart.items.item-1.item-name" value="<%= @name %>" id="item_name" />
-    <input type="hidden" name="shopping-cart.items.item-1.item-description" value="12&quot; x 12&quot; x 6&quot; Depth" id="item_description" />
-    <input type="hidden" name="shopping-cart.items.item-1.unit-price" value="<%= @product_info[:carbon][:price] %>" id="item_price" />
-    <input type="hidden" name="shopping-cart.items.item-1.unit-price.currency" value="USD" id="item_currency" />
-    <input type="hidden" name="shopping-cart.items.item-1.item-weight.value" value="<%= @product_info[:carbon][:weight] %>" id="item_weight" />
-    <input type="hidden" name="shopping-cart.items.item-1.item-weight.unit" value="LB" />
-    
-    <!-- local pickup -->
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.name" value="Local Pickup - Nashville, TN"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price" value="0"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.flat-rate-shipping-2.price.currency" value="USD" />
-
-    <!-- shipping tables -->
-    <% Configuration['shipping'].each_with_index do |method,i| %>
-    <!-- <%= "#{method['carrier']} #{method['type']}" %> -->
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.price" value="<%= method['price'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.price.currency" value="<%= method['currency'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.shipping-company" value="<%= method['carrier'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.carrier-pickup" value="<%= method['pickup'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.shipping-type" value="<%= method['type'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.additional-fixed-charge" value="<%= method['fixed-charge'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.additional-fixed-charge.currency" value="<%= method['currency'] %>" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.carrier-calculated-shipping-options.carrier-calculated-shipping-option-<%= i %>.additional-variable-charge-percent" value="<%= method['additional-variable-charge-percent'] %>" />
     <% end %>
+    <p>All charcoal baskets are fabricated with <strong>10 gauge 3/4&quot; carbon (or stainless) flat expanded steel</strong>.</p>
+    <p class="sub"><strong>NOTE:</strong> Baskets may be up to 1/4&quot over/under selected size.</p>
+    <div class="checkoutTotalBox" style="clear: left;">
+        <p>
+            <input type="checkbox" id="stainless_option" /> <label for="stainless_option" class="pointer">Use stainless steel (add $<span id="stainless_option_price"><%= ("%.2f" % (@product_info[:stainless][:price] - @product_info[:carbon][:price])) %></span>)</label>
+            <br /><a href="#" id="explain_stainless" class="sub">Why should I get stainless steel?</a>
+        <div id="why_stainless" class="infobox hide">
+            <p>
+                Carbon steel should only be used up to 750&deg;, stainless steel can be used up to 1500&deg;.  Most consumer grade smokers
+                will not exceed 750&deg;.  Some people would like more durable material or have large smokers capable of reaching higher temperatures.
+            </p>
+            <center><a href="#" id="close_stainless" class="sub">close</a></center>
+        </div>
+        <p>
+            <span style="color: #f00; font-weight: bold;">FREE SHIPPING ON ADDITIONAL BASKETS!</span><br />
+            <strong>Quantity:</strong>
+            <input type="text" id="item_quantity" name="shopping-cart.items.item-1.quantity" value="1" size="1" class="selectOnFocus" /><br />
+            <a href="#" id="explain_multiple" class="sub">Why should I order multiple baskets?</a>
+        </p>
+        <div id="why_multiple" style="clear: both;" class="infobox hide">
+            <h3>Why should I order multiple baskets?</h3>
+            <p>Having multiple charcoal baskets makes it much easier to swap fuel with minimal temperature loss during longer burns.</p>
+            <center><a href="#" id="close_multiple" class="sub">close</a></center>
+        </div>
+        <p><strong>Subtotal:</strong> $<span id="subtotal"><%= @product_info[:carbon][:price] %></span></p>
+        <p>
+            <strong>Shipping:</strong>
+            <select name="shipping">
+                <option value="18.00">UPS Ground - $18.00</option>
+                <option value="0">Local Pickup (Nashville, TN) - FREE</option>
+            </select>
+        </p>
+        <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" style="border-width: 0;" alt="PayPal - The safer, easier way to pay online" />
+        <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+        
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="<%= Configuration['checkout']['account'] %>">
+        <input type="hidden" id="spec" value="<%= @spec %>" />
 
-    <!-- package dimensions -->
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.unit" value="IN" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.height.value" value="8" id="item_height" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.length.unit" value="IN"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.length.value" value="12" id="item_length"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.unit" value="IN"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.width.value" value="12" id="item_width"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.weight.unit" value="LB" />
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.weight.value" value="<%= @product_info[:carbon][:weight] %>" />
+        <!-- item information -->
+        <input type="hidden" value="<%= @name %>" id="item_name">
+        <input type="hidden" name="item_name" value="12&quot; x 12&quot; x 6&quot; Depth" id="item_description" />
+        <input type="hidden" name="amount" id="item_price" value="<%= @product_info[:carbon][:price] %>">
+        <input type="hidden" name="currency_code" value="USD">
+        
+        <!-- package dimensions -->
+        <input type="hidden" name="height_unit" value="IN" />
+        <input type="hidden" name="height_x" value="8" id="item_height" />
+        <input type="hidden" name="length_unit" value="IN"/>
+        <input type="hidden" name="length_x" value="12" id="item_length"/>
+        <input type="hidden" name="width_unit" value="IN"/>
+        <input type="hidden" name="width_x" value="12" id="item_width"/>
+        <input type="hidden" name="weight_unit" value="LB" />
+        <input type="hidden" name="weight" value="<%= @product_info[:carbon][:weight] %>" id="item_weight" />
 
-    <!-- shipping from information -->
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.id" value="ABC"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.city" value="<%= Configuration['checkout']['shipping']['from']['city'] %>"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.region" value="<%= Configuration['checkout']['shipping']['from']['state'] %>"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.country-code" value="<%= Configuration['checkout']['shipping']['from']['country'] %>"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.shipping-methods.carrier-calculated-shipping-1.shipping-packages.shipping-package-1.ship-from.postal-code" value="<%= Configuration['checkout']['shipping']['from']['postal-code'] %>"/>
-
-    <!-- tax rules -->
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.tax-tables.default-tax-table.tax-rules.default-tax-rule-1.shipping-taxed" value="false"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.tax-tables.default-tax-table.tax-rules.default-tax-rule-1.rate" value="<%= Configuration['checkout']['tax']['rate'] %>"/>
-    <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.tax-tables.default-tax-table.tax-rules.default-tax-rule-1.tax-areas.us-state-area-1.state" value="<%= Configuration['checkout']['tax']['state'] %>"/>
-
-    <input type="hidden" name="_charset_" />
-    <input type="hidden" name="analyticsdata" value="">
-    <input type="hidden" id="continue_shopping_url" name="checkout-flow-support.merchant-checkout-flow-support.continue-shopping-url" value="http://www.charcoalbasket.com/page/order-received" />
-  </div>
+        <input type="hidden" name="_charset_" />
+        <input type="hidden" name="analyticsdata" value="">
+        <input type="hidden" name="cancel_return" value="http://www.charcoalbasket.com/" />
+        <input type="hidden" name="return" value="http://www.charcoalbasket.com/page/order-received" />
+        <input type="hidden" name="shopping_url" value="http://www.charcoalbasket.com/" />
+    </div>
 </form>
