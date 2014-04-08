@@ -117,6 +117,27 @@ $(function() {
             // call recalculate on page load, and form submission
             $(recalculate);
             $('#BB_BuyButtonForm').submit(recalculate);
+            
+            $('input[type=image][name=submit]').click(function() {
+                var oid = new Date().getTime();
+                var store = 'charcoalbasket.com';
+                var total = $('#item_price').val();
+                var tax = 0;
+                var shipping = $('select[name=shipping]').val();
+                var city = '';
+                var state = '';
+                var country = '';
+                pageTracker._addTrans(oid, store, total, tax, shipping, city, state, country);
+                
+                var sku = $('#item_name').val();
+                var name = $('#item_description').val();
+                var category = 'Basket';
+                var price = '';
+                var qty = $('#item_quantity').val();
+                pageTracker._addItem(oid, sku, name, category, price, qty);
+                pageTracker._trackTrans();
+                return false;
+            });
         
         })();
     }
