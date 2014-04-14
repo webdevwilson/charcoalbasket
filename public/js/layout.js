@@ -136,7 +136,6 @@ $(function() {
                 var qty = $('#item_quantity').val();
                 pageTracker._addItem(oid, sku, name, category, price, qty);
                 pageTracker._trackTrans();
-                return false;
             });
         
         })();
