@@ -4,7 +4,6 @@ require 'rubygems'
 require 'pony'
 require 'erb'
 require 'sinatra'
-require 'sinatra/content_for'
 require 'calculator'
 require 'json'
 
