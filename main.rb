@@ -109,6 +109,10 @@ Comments:
 
 #{params[:comments]}
 EOF
+  
+  params.delete "name"
+  params.delete "email_address"
+  puts params
   send_mail( params )
   redirect "/page/feedback-received"
 end
