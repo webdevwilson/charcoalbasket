@@ -50,6 +50,7 @@ $(function() {
                 $('#stainless_option_price').text(stainlessPrice);
                 $('#item_price').val(data[soc].price);
                 $('#item_weight').val(data[soc].weight);
+                $('select[name="shipping"] option:first').val(data.shipping).text('UPS Ground - $' + data.shipping + '.00');
                 
                 // update description
                 var text,

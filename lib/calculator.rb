@@ -18,10 +18,20 @@ class Calculator
       dimensions = { :x => x, :y => y, :height => height }
       is_custom = ( x != 12 || y != 12 || height != 6 )
     end
-
+    
+    if width > 12 or height > 12
+      shipping = 18
+    else
+      shipping = 15
+    end
+    
     { :shape => shape, :stainless => calculate_material(material, 'stainless', is_custom),
       :carbon => calculate_material(material, 'carbon', is_custom), :dimensions => dimensions, 
-      :package_width => width + 2, :package_height => height + 2 }
+      :package_width => width + 2, :package_height => height + 2, :shipping => shipping }
+    
+  end
+  
+  def self.shipping(spec)
     
   end
   

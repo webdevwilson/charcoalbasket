@@ -14,9 +14,11 @@ class CalculatorTest < Test::Unit::TestCase
     assert_equal 5.4, i[:carbon][:weight]
     assert_equal 12, i[:width]
     assert_equal 6, i[:height]
+    assert_equal 15, i[:shipping]
     
     assert_equal 145.99, i[:stainless][:price]
     assert_equal 6.15, i[:stainless][:weight]
+    assert_equal 15, i[:shipping]
     
     i = Calculator.calculate('round:18x6')
     assert_equal 88.99, i[:carbon][:price]
@@ -25,6 +27,7 @@ class CalculatorTest < Test::Unit::TestCase
     assert_equal 6, i[:height]
     assert_equal 148.99, i[:stainless][:price]
     assert_equal 5.23, i[:stainless][:weight]
+    assert_equal 18, i[:shipping]
     
   end
   

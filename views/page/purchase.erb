@@ -83,7 +83,7 @@ end
         <p>
             <strong>Shipping:</strong>
             <select name="shipping">
-                <option value="18.00">UPS Ground - $18.00</option>
+                <option value="<%= @product_info[:shipping] %>">UPS Ground - $<%= @product_info[:shipping] %>.00</option>
                 <option value="0">Local Pickup (Nashville, TN) - FREE</option>
             </select>
         </p>
