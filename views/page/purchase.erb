@@ -1,10 +1,10 @@
-<% 
+<%
 if !@product_info
 redirect '/page/purchase/standard/size.html', 301
 end
 %>
 <form action="<%= Configuration['checkout']['url'] %>" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" onsubmit="setUrchinInputCode(pageTracker);">
-    <h1>  
+    <h1>
         <% if @type == 'standard' %>
         12&quot; x 12&quot; x 6&quot; Charcoal Basket
         <% elsif @type == 'brand' %>
@@ -89,7 +89,7 @@ end
         </p>
         <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" style="border-width: 0;" alt="PayPal - The safer, easier way to pay online" />
         <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-        
+        <br /><input type="button" class="button" value="Pay By Check or Money Order" id="pay_by_check" />
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="<%= Configuration['checkout']['account'] %>">
         <input type="hidden" id="spec" value="<%= @spec %>" />
@@ -99,7 +99,7 @@ end
         <input type="hidden" name="item_name" value="12&quot; x 12&quot; x 6&quot; Depth" id="item_description" />
         <input type="hidden" name="amount" id="item_price" value="<%= @product_info[:carbon][:price] %>">
         <input type="hidden" name="currency_code" value="USD">
-        
+
         <!-- package dimensions -->
         <input type="hidden" name="height_unit" value="IN" />
         <input type="hidden" name="height_x" value="8" id="item_height" />

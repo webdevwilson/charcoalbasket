@@ -14,7 +14,11 @@ puts "Starting charcoalbasket.com #{Configuration.environment} site..."
 MAIL_CONFIG = {}
 
 def send_mail(email)
-  Pony.mail( email.merge(MAIL_CONFIG) )
+  begin
+    Pony.mail( email.merge(MAIL_CONFIG) )
+  rescue Exception => e
+    logger.error "Error sending email #{email} #{e}"
+  end
 end
 
 set :public_folder, File.join( File.dirname(__FILE__), 'public' )
@@ -77,7 +81,7 @@ get '/page/:page' do
       raise Sinatra::NotFound.new
     end
   else
-    
+
     if params[:page] == 'purchase'
       redirect_url = '/purchase/standard/size.html'
     elsif params[:page] == 'grills'
@@ -85,9 +89,9 @@ get '/page/:page' do
     else
       redirect_url = "/page/#{params[:page]}.html"
     end
-    
+
     redirect redirect_url, 301
-    
+
   end
 end
 
@@ -95,6 +99,21 @@ get '/*.json' do
   content_type 'application/json'
   op=params[:splat][0]
   Calculator.calculate( params['s'] ).to_json
+end
+
+post '/purchase/by_mail.html' do
+  erb 'page/by_mail'.to_sym
+end
+
+post '/purchase/by_mail_print.html' do
+  body =
+  send_mail({
+    :subject => 'charcoalbasket.com mail order in flight',
+    :to      => Configuration['feedback']['to'],
+    :from    => 'no-reply@charcoalbasket.com',
+    :body    => params.collect { |k,v| "#{k} = #{v}\n" }
+  })
+  erb 'page/by_mail_print'.to_sym
 end
 
 post '/forms/feedback.html' do
@@ -109,10 +128,8 @@ Comments:
 
 #{params[:comments]}
 EOF
-  
   params.delete "name"
   params.delete "email_address"
-  puts params
   send_mail( params )
   redirect "/page/feedback-received"
 end

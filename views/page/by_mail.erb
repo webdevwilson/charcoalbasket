@@ -1,0 +1,21 @@
+<h1>Fill out the form below to order by mail</h1>
+<form action="/purchase/by_mail_print.html" method="POST" class="form">
+<% params.each do |k,v| %>
+	<input type="hidden" name="<%= ERB::Util::html_escape(k) %>" value="<%= ERB::Util::html_escape(v) %>" />
+<% end %>
+<p>
+	Please allow 4-6 weeks for mail order delivery.
+</p>
+<%= erb 'page/by_mail_table'.to_sym %>
+<p>
+	<label for="email">Email Address:</label>
+	<input type="textbox" name="email" id="email" />
+</p>
+<p>
+	<label for="address">Shipping Address:</label><br />
+	<textarea name="address" style="width: 70%; height: 60px;"></textarea>
+</p>
+<p>
+	<input type="submit" value="Continue" class="button" />
+</p>
+</form>

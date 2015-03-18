@@ -9,17 +9,17 @@ $(function() {
             return false;
         });
     })();
-    
+
     if( $('#BB_BuyButtonForm').length === 1 ) {
         (function setupPurchasePage() {
-        
+
             var specCache = {};
-        
+
             // calculates and redisplays price info
             var qi = $('input#item_quantity');
             var si = $('input#stainless_option');
             var recalculate = function() {
-            
+
                 // call server to get spec information
                 var spec = $('input#spec').val();
                 if(!specCache[spec]) {
@@ -28,17 +28,17 @@ $(function() {
                     }, function(d) {
                         specCache[spec] = d;
                         updateUI(d);
-                    });    
+                    });
                 } else {
                     updateUI(specCache[spec]);
                 }
             };
-        
+
             var updateUI = function(data) {
-            
+
                 // get quantity, default to 1
                 var qty=qi.intVal(1);
-            
+
                 // is stainless option checked?
                 var stainless = si[0].checked;
                 var soc=stainless ? 'stainless' : 'carbon';
@@ -51,7 +51,7 @@ $(function() {
                 $('#item_price').val(data[soc].price);
                 $('#item_weight').val(data[soc].weight);
                 $('select[name="shipping"] option:first').val(data.shipping).text('UPS Ground - $' + data.shipping + '.00');
-                
+
                 // update description
                 var text,
                 dim = data.dimensions;
@@ -59,17 +59,21 @@ $(function() {
                 if(data.shape === 'square') text = dim.x + x + dim.y + x + dim.height + "\" Depth";
                 else text = dim.diameter + x + dim.height + "\" Depth";
                 text = $('#item_name').val() + ' ' + text;
-                
+
                 if(stainless) text = "Stainless " + text;
                 $('#item_description').val(text);
+
+                $('#pay_by_check').unbind('click').click(function() {
+                  $('#BB_BuyButtonForm').attr('action','/purchase/by_mail.html').submit();
+                });
             };
-        
+
             si.change(recalculate);
             qi.keyup(recalculate);
-        
+
             // custom size fields
             (function setupCustomSizeForm() {
-            
+
                 var specChanged = function() {
                     var s=$('#shape').val();
                     if(s === 'round') {
@@ -79,18 +83,18 @@ $(function() {
                     }
                     recalculate();
                 };
-            
+
                 $('input.customSizeField').keyup(specChanged);
                 $('select.customSizeField').change(specChanged);
-         
+
             })();
-        
+
             // do select on focus fields
             var select = function() {
                 this.select();
             };
             $('.selectOnFocus').mouseup(select);
-        
+
             (function infoBoxes() {
                 $('a[id^="explain"]').click(function() {
                     var n=$('#why_' + $(this).attr('id').substring(8));
@@ -99,26 +103,26 @@ $(function() {
                     } else {
                         n.fadeOut().attr('state','closed');
                     }
-                    return false; 
+                    return false;
                 });
-   
+
                 $('a[id^="close"]').click(function() {
                     $('#why_' + $(this).attr('id').substring(6)).fadeOut();
-                    return false; 
+                    return false;
                 });
             })();
-        
+
             // show round or circular dimension fields
             (toggleFields = function() {
                 $('div[id$="_fields"]').hide();
                 $('div#' + $('#shape').val() + '_fields').show();
             })();
             $('select#shape').change(toggleFields);
-        
+
             // call recalculate on page load, and form submission
             $(recalculate);
             $('#BB_BuyButtonForm').submit(recalculate);
-            
+
             $('input[type=image][name=submit]').click(function() {
                 var oid = new Date().getTime();
                 var store = 'charcoalbasket.com';
@@ -129,7 +133,7 @@ $(function() {
                 var state = '';
                 var country = '';
                 pageTracker._addTrans(oid, store, total, tax, shipping, city, state, country);
-                
+
                 var sku = $('#item_name').val();
                 var name = $('#item_description').val();
                 var category = 'Basket';
@@ -138,7 +142,7 @@ $(function() {
                 pageTracker._addItem(oid, sku, name, category, price, qty);
                 pageTracker._trackTrans();
             });
-        
+
         })();
     }
 

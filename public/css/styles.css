@@ -2,6 +2,14 @@ body { background: #ececec; font-family: 'Istok Web', sans-serif, helvetica, ari
 
 h1 { font-size: 2em; }
 
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
 input.button {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
