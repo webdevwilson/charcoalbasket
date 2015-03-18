@@ -11,7 +11,18 @@ require 'json'
 Configuration.environment = 'prod' # $*[0] || 'prod'
 puts "Starting charcoalbasket.com #{Configuration.environment} site..."
 
-MAIL_CONFIG = {}
+Pony.options = {
+  :via => :smtp,
+  :via_options => {
+    :address => 'smtp.sendgrid.net',
+    :port => '587',
+    :domain => 'heroku.com',
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+}
 
 def send_mail(email)
   begin
