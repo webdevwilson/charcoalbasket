@@ -3,18 +3,19 @@ body { background: #ececec; font-family: 'Istok Web', sans-serif, helvetica, ari
 h1 { font-size: 2em; }
 
 input.button {
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-    background-color: #eee;
-    border: 1px solid #999;
-    color: #666;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #1a41a6;
+    border: 1px solid #114499;
+    color: #fff;
+    font-weight: bold;
     padding: 6px 12px;
     font-size: 1.1em;
     cursor: pointer;
 }
-input.button:hover { background-color: #ccc; }
-input.button:active { background-color: #f0f0f0; }
+input.button:hover { background-color: #2266cc; }
+input.button:active { background-color: #2266cc; }
 
 #container { background-color: #fff; border: 1px solid #ccc; }
 
@@ -127,12 +128,12 @@ input.button:active { background-color: #f0f0f0; }
 	zoom: 1;
 	display: block;
 }
-#lightbox-nav-btnPrev { 
-	left: 0; 
+#lightbox-nav-btnPrev {
+	left: 0;
 	float: left;
 }
-#lightbox-nav-btnNext { 
-	right: 0; 
+#lightbox-nav-btnNext {
+	right: 0;
 	float: right;
 }
 #lightbox-container-image-data-box {
@@ -145,22 +146,22 @@ input.button:active { background-color: #f0f0f0; }
 	padding: 0 10px 0;
 }
 #lightbox-container-image-data {
-	padding: 0 10px; 
-	color: #666; 
+	padding: 0 10px;
+	color: #666;
 }
-#lightbox-container-image-data #lightbox-image-details { 
-	width: 70%; 
-	float: left; 
-	text-align: left; 
-}	
+#lightbox-container-image-data #lightbox-image-details {
+	width: 70%;
+	float: left;
+	text-align: left;
+}
 #lightbox-image-details-caption { font-weight: bold; }
 #lightbox-image-details-currentNumber {
-	display: block; 
-	clear: left; 
-	padding-bottom: 1.0em;	
-}			
+	display: block;
+	clear: left;
+	padding-bottom: 1.0em;
+}
 #lightbox-secNav-btnClose {
-	width: 66px; 
+	width: 66px;
 	float: right;
-	padding-bottom: 0.7em;	
+	padding-bottom: 0.7em;
 }
