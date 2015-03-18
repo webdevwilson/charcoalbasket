@@ -26,7 +26,7 @@ Pony.options = {
 
 def send_mail(email)
   begin
-    Pony.mail( email.merge(MAIL_CONFIG) )
+    Pony.mail( email )
   rescue Exception => e
     logger.error "Error sending email #{email} #{e}"
   end
