@@ -69,7 +69,7 @@ weight:
     carbon: 57.6
     stainless: 65.6
 feedback:
-  to: kwilson@charcoalbasket.com
+  to: info@charcoalbasket.com
   subject: charcoalbasket.com Form Submission
 analytics:
   code: UA-27811127-1
@@ -90,7 +90,7 @@ environment:
       account: kerry-facilitator@allthingswilson.com
     analytics:
       code: UA-XXXXXXXX-1
-  prod:    
+  prod:
     checkout:
       url: https://www.paypal.com/cgi-bin/webscr
       account: kerry@allthingswilson.com
