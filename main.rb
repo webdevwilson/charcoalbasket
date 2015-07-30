@@ -8,7 +8,7 @@ require 'sinatra/content_for'
 require 'calculator'
 require 'json'
 
-Configuration.environment = 'prod' # $*[0] || 'prod'
+Configuration.environment = 'prod' #$*[0] || 'prod'
 puts "Starting charcoalbasket.com #{Configuration.environment} site..."
 
 Pony.options = {
@@ -109,23 +109,7 @@ end
 
 get '/*.json' do
   content_type 'application/json'
-  op=params[:splat][0]
   Calculator.calculate( params['s'] ).to_json
-end
-
-post '/purchase/by_mail.html' do
-  erb 'page/by_mail'.to_sym
-end
-
-post '/purchase/by_mail_print.html' do
-  body =
-  send_mail({
-    :subject => 'charcoalbasket.com mail order in flight',
-    :to      => Configuration['feedback']['to'],
-    :from    => 'no-reply@charcoalbasket.com',
-    :body    => params.collect { |k,v| "#{k} = #{v}\n" }
-  })
-  erb 'page/by_mail_print'.to_sym
 end
 
 post '/forms/feedback.html' do

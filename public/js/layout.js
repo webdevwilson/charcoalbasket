@@ -62,10 +62,6 @@ $(function() {
 
                 if(stainless) text = "Stainless " + text;
                 $('#item_description').val(text);
-
-                $('#pay_by_check').unbind('click').click(function() {
-                  $('#BB_BuyButtonForm').attr('action','/purchase/by_mail.html').submit();
-                });
             };
 
             si.change(recalculate);
