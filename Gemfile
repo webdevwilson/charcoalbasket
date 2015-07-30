@@ -1,3 +1,4 @@
+#ruby=jruby-1.7.21
 ruby '1.9.3', engine: 'jruby', engine_version: '1.7.21'
 
 source 'https://rubygems.org'
